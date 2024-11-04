@@ -1,0 +1,135 @@
+.main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 98vw;
+    display: grid;
+    grid-template-rows: calc(98vh - 24px) 24px;
+    transition: all 1s ease;
+    z-index: 999;
+}
+
+.shade {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--modalbg);
+    z-index: -100;
+}
+
+.topbar {
+    height: 24px;
+    width: 100%;
+    background-color: var(--darkblue);
+    align-items: center;
+    text-align: center;
+}
+
+.topbar:hover {
+    background-color: var(--red);
+    color: var(--color-text-inverted);
+    cursor: pointer;
+}
+
+.open {
+    grid-template-rows: calc(30vh) calc(70vh - 24px);
+    transition: all 1s ease;
+}
+@media (width > 1024px) {
+    .innerpanel {
+        width: 1024px;
+        height: 100%;
+        transition: all 1s ease;
+        margin-left: calc((100vw - 1024px) / 2);
+        position: relative;
+    }
+}
+
+@media (width <= 1024px){
+    .innerpanel {
+        width: 100vw;
+        height: 100%;
+        transition: all 1s ease;
+        margin-left: 0px;
+        position: relative;
+    }
+}
+
+.exit {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    height: 40px;
+    width: 40px;
+    z-index: 1000;
+    border-radius: 0 0 0 10px;
+    z-index: 1000;
+    background-color: var(--color-background);
+    font-size: x-large;
+    transition: all 1s ease;
+}
+
+.exit:hover {
+    background-color: var(--hover);
+    cursor: pointer;
+    transition: all 1s ease;
+}
+
+.innerpanel > div:not(.topbar) {
+    width: 100%;
+    background-color: var(--color-background);
+    height: 100%;
+    overflow-y: scroll;
+    --ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    transition: all 1s ease;
+}
+
+@media (orientation: landscape) {
+    .modaltray {
+        display: grid;
+        grid-template-rows: 24px auto;
+        z-index: 5;
+        transition: all 1s ease;
+        width: 1024px;
+        margin-left: calc((100vw - 1024px) / 2);
+        height: 100%;
+        min-height: 100%;
+    }
+}
+
+@media (orientation: portrait){
+    .modaltray {
+        display: grid;
+        grid-template-rows: 24px auto;
+        z-index: 5;
+        transition: all 1s ease;
+        width: 98vw;
+        margin-left: 0px;
+        height: 100%;
+        min-height: 100%;
+    }
+}
+
+.modaltraycontrol {
+    height: 24px;
+    transition: all 1s ease;
+}
+
+.traybody {
+    transition: all 1s ease;
+    height: 100%;
+    background-color: var(--color-background);
+    overflow-y: auto;
+}
+
+.closed {
+    height: 0;
+    overflow: hidden;
+    transition: height 2s ease;
+}
+
+.closed > div {
+    transition: height 2s ease;
+}

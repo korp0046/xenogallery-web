@@ -1,0 +1,584 @@
+.inputtags {
+    color: var(--color-text);
+    background-color: var(--color-background);;
+    font-weight: bold;
+    font-size: large;
+    font-stretch: expanded;
+    padding: 4px;
+    padding-left: 8px;
+}
+
+.inputtitle {
+    color: var(--color-text);
+    background-color: var(--color-background);;
+    font-weight: bold;
+    font-size: xx-large;
+    font-stretch: expanded;
+    padding: 4px;
+    padding-left: 8px;
+    font-variant: small-caps;
+    flex-grow: 1;
+    font-stretch: expanded;
+    margin: 8px;
+    width: 95%;
+}
+
+.titlediv {
+    display: flex;
+}
+
+.inputstring {
+    color: var(--color-text);
+    font-size: large;
+    font-stretch: expanded;
+    background-color: var(--color-background);
+    width: 100%;
+    padding: 4px;
+    padding-left: 8px;
+}
+
+.inputheader {
+    color: #ffffff;
+    font-weight: bold;
+    min-width: 100%;
+    width: 100%;
+    font-size: large;
+    font-stretch: expanded;
+    padding: 4px;
+    padding-left: 8px;
+    font-variant: small-caps;
+}
+
+.statsflex {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    flex-wrap: wrap;
+    padding: 4px;
+}
+
+.inputstrheader {
+    color: var(--color-text-hint);
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-weight: bold;
+    min-width: 100%;
+    width: 100%;
+    font-size: x-large;
+    font-stretch: expanded;
+    padding: 4px;
+    padding-left: 8px;
+    text-transform: uppercase;
+    pointer-events: none;
+    user-select: none;
+}
+
+.inputstrheaderselect {
+    top: 5px;
+    left: 5px;
+    font-size: small;
+}
+
+.inputstrheaderfixed {
+    color: var(--color-text-hint);
+    position: relative;
+    font-weight: bold;
+    min-width: 100%;
+    width: 100%;
+    font-size: small;
+    font-stretch: expanded;
+    padding: 4px;
+    padding-left: 8px;
+    text-transform: uppercase;
+    pointer-events: none;
+    user-select: none;
+}
+
+.inputstr {
+    color: var(--color-text);
+    background-color: var(--offset);
+    font-weight: bold;
+    font-size: large;
+    font-stretch: expanded;
+    border-style: none;
+    height: 60px;
+    width: 100%;
+    height: 100%;
+    padding-left: 5px;
+    padding-top: 20px;
+}
+
+.tagdiv {
+    width: calc(100% - 14px);
+}
+
+.tagline {
+    display: flex;    
+    padding: 4px;
+    background-color: var(--color-background);;
+    margin: 4px;
+}
+
+.sqbutton {
+    height: 32px;
+    width: 32px;
+}
+
+.smallbutton {
+    margin-top: auto;
+    margin-bottom: 8px;
+}
+
+.inputnum {
+    color: var(--color-text);
+    background-color: var(--offset);
+    font-weight: bold;
+    font-size: large;
+    font-stretch: expanded;
+    border-style: none;
+    height: 60px;
+    width: 100%;
+    height: 100%;
+    padding-left: 5px;
+    padding-top: 20px;
+}
+
+
+.editdiv {
+    background-color: var(--offset);
+    border-radius: 5px;
+    position: relative;
+    padding: 0.5em;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px;
+    height: 60px;
+    min-width: 100px;
+}
+
+.dynamicflex {
+    display: flex;
+    height: auto;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.editdivlarge {
+    background-color: var(--offset);
+    border-radius: 5px;
+    position: relative;
+    padding: 0.5em;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px;
+    gap: 10px;
+    width: 100%;
+}
+
+.textareadiv {
+    background-color: var(--offset);
+    border-radius: 5px;
+    position: relative;
+    padding: 0.5em;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px;
+}
+
+.slim {
+    max-width: 180px;
+}
+
+.savebutton {
+    padding: 4px;
+    padding-left: 8px;
+    font-weight: bold;
+    margin: 4px;
+    background-color: var(--color-text);
+    font-variant: small-caps;
+    cursor: pointer;
+    max-width: 100px;
+    border-style: inset;
+    border-width: 2px;
+    color: black;
+}
+
+.rowbutton {
+    padding: 4px;
+    padding-left: 8px;
+    font-weight: bold;
+    margin: 4px;
+    background-color: var(--color-text);
+    font-variant: small-caps;
+    cursor: pointer;
+    max-width: 100px;
+    border-style: inset;
+    border-width: 2px;
+    color: black;
+}
+
+.savebutton:hover {
+    background-color: var(--hover);
+}
+
+.expandeditem {
+    border-width: 2;
+    border-style: solid;
+    margin: 4px;
+    padding: 4px;
+    background-color: var(--color-background);
+}
+
+.namerow {
+    display: flex;
+    margin-right: 30px;
+}
+
+.blockcontrol {
+    position: absolute;
+    right: 0;
+    margin-right: 30px;
+}
+
+.powerslistitem {
+    background-color: var(--offset);
+    padding: 4px;
+    border-radius: 4px;
+    display: flex;
+    font-size: x-large;
+}
+
+.powerslistitem:hover {
+    background-color: var(--darkblue);
+    cursor: pointer;
+}
+
+.tinyimg {
+    height: 32px;
+    width: 32px;
+}
+
+.elemtext {
+    margin-left: 8px;
+    color: var(--color-text);
+}
+
+.list {
+    display: flex;
+    gap: 10px;
+    max-width: 100%;
+    flex-wrap: wrap;
+}
+
+.grow {
+    flex-grow: 1;
+}
+
+.vertgrid {
+    display: grid;
+    width: 48px;
+    grid-template-rows: 48px auto;
+}
+
+.disabled {
+    filter:drop-shadow(1px);
+}
+
+.imgdiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgdiv > img {
+    max-width: 100%;
+    min-width: 128px;
+    min-height: 128px;
+}
+
+div.controls {
+    display: flex;
+}
+
+div.check {
+    background-color: var(--offset);
+    padding: 2px;
+    border-radius: 5px;
+}
+
+.imagedivpreview {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.imgdiv {
+    margin: auto;
+}
+
+.imgdiv:hover {
+    cursor: pointer;
+}
+
+.imgimg {
+    margin: auto;
+
+}
+
+.imagedivpreview {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.imgdivsmall {
+    height: 256px;
+    width: 256px;
+}
+
+.imgdivsmall:hover{
+    cursor: pointer;
+}
+
+.imgimgsmall {
+    height: 256px;
+    width: 256px;
+
+}
+
+.checkboxesdropdown {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 9999;
+}
+
+.checkboxesdropdown > div {
+    z-index: 99999;
+}
+
+.tagwrapper{
+    padding: 2px;
+    background-color: var(--color-text-hint);
+    border-radius: 5px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.tagwrapper:hover {
+    background-color: var(--hover);
+}
+
+.positive {
+    background-color: var(--green);
+    color: white;
+}
+
+.negative {
+    background-color: var(--red);
+    color: white;
+}
+
+.group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 20px 5px 5px 5px;
+    border-style: solid;
+    border-color: var(--offset);
+    border-radius: 10px;
+    position: relative;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.compact {
+    width: 140px;
+    padding-right: 40px;
+}
+
+.grouplabel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--color-text-hint);
+    user-select: none;
+    padding-left: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: large;
+    font-stretch: expanded;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+
+  input:disabled + .slider {
+    background-color: #7DDE92;
+  }
+
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+tbody.editortable tr:nth-child(odd) {
+    background-color: var(--color-background-alt);
+}
+
+div.editortable {
+    width: 100%;
+    overflow-x: scroll;
+}
+
+.flexiblewrapper {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+.flexibleitem {
+    position: relative;
+    background-color: var(--offset);
+    border-radius: 4px;
+    padding: 2px;
+    min-height: 60px;
+    cursor: pointer;
+    min-width: 248px;
+}
+
+.flexibleitem:hover .flexiblecontrol {
+    width: 30px;
+    background-color: orange;
+    display: block;
+    -webkit-transition: width 1s ease-in-out;
+    -moz-transition: width 1s ease-in-out;
+    -o-transition: width 1s ease-in-out;
+    transition: width 1s ease-in-out;
+}
+
+.flexiblecontrol {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 0%;
+    overflow: hidden;
+    border-radius: 4px;
+    padding: 2px;
+}
+
+.flexiblecontrol > div {
+    margin-left: 1px;
+}
+
+.flexiblecontrol > div:hover {
+    background-color: rgba(255,255,255,0.3);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.flexiblecontrolopen {
+    width: 30px;
+    -webkit-transition: width 1s ease-in-out;
+    -moz-transition: width 1s ease-in-out;
+    -o-transition: width 1s ease-in-out;
+    transition: width 1s ease-in-out;
+}
+
+.removable {
+    background-color: var(--red) !important;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+	}
+
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+	}
+}
+
+.flexibleitemtitle {
+    font-variant: small-caps;
+    padding-bottom: 4px;
+}
+
+.flexibleitemdetail {
+    display: grid;
+    grid-template-columns: 64px auto;
+}
+
+.flexibleitemdetail > div {
+    width: 100%;
+}
+
+.tintsubblue > div {
+    filter: sepia(100%) saturate(200%) brightness(70%) hue-rotate(155deg);
+}
+
+.tintsubgreen > div {
+    filter: sepia(100%) saturate(200%) brightness(70%) hue-rotate(66deg);
+
+}
+
+.tintsubred > div {
+    filter: sepia(100%) saturate(200%) brightness(70%) hue-rotate(310deg);
+
+}

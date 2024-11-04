@@ -1,0 +1,19 @@
+.root {
+    width: min(1024px, 100vw);
+    height: 100%;
+    position: relative;
+}
+
+.root.compact {
+    max-height: 33.3333vh;
+}
+
+.rootmodal {
+    width: min(1024px, 100vw);
+    height: 100%;
+    position: relative;
+}
+
+.rootmodal.compact {
+    max-height: calc(100vh - 5vh);
+}

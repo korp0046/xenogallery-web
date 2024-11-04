@@ -1,0 +1,73 @@
+nav.topnav {
+    width: min(1024px,100vw);
+    border: 1px var(--red) solid;
+    position: fixed;
+    transition: all 1s;
+    top: 0px;
+    left: calc((100vw - 1024px) / 2);
+    z-index: 100;
+}
+
+div.control {
+    background-color: var(--darkblue);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 24px;
+    width: 1024px;
+    align-items: center;
+    text-align: center;
+    transition: all 1s;
+    flex-basis: 100%;
+}
+
+@media (width <= 1024px) {
+    nav.topnav {
+        width: 100vw;
+        left: 0px;
+    }
+    div.control {
+        width: 100vw;
+    }
+}
+
+div.control:hover {
+    background-color: var(--red);
+    color: var(--color-text-inverted);
+    cursor: pointer;
+}
+
+div.body {
+    margin-top: 0px;
+    background-color: var(--color-background);
+}
+
+div.flex {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+div.flex > div {
+    flex: 1;
+    align-items: center;
+    text-align: center;
+    background-color: var(--darkblue);
+}
+
+div.topnav > div:hover {
+    background-color: var(--red);
+    color: var(--color-text-inverted);
+    cursor: pointer;
+}
+
+div.opentab {
+    border-left: 1px var(--red) solid;
+    border-right: 1px var(--red) solid;
+    background-color: var(--red) !important;
+    color: var(--color-text-inverted) !important;
+}
+
+div.dropwrapper {
+
+}

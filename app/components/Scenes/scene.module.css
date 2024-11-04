@@ -1,0 +1,48 @@
+.test {
+    background-color: red;
+}
+.menuitemdiv:hover {
+    background-color: var(--darkblue);
+    color: var(--color-text-inverted);
+    cursor: pointer;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6rem;
+    min-height: 100vh;
+  }
+  
+  .description {
+    display: inherit;
+    justify-content: inherit;
+    align-items: inherit;
+    font-size: 0.85rem;
+    max-width: var(--max-width);
+    width: 100%;
+    z-index: 2;
+    font-family: var(--font-mono);
+  }
+  
+  .nodeName {
+    font-family: 'DaPandora';
+  }
+
+  .menudiv {
+      position: fixed;
+      background-color: aliceblue;
+      border-radius: 3px;
+  }
+  
+  .menudivinner {
+    padding: 4px;
+  }
+
+  .contextname {
+    background-color: var(--red);
+    color: var(--color-text-inverted);
+    padding: 4px;
+  }

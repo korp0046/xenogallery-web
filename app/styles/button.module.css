@@ -1,0 +1,136 @@
+.left {
+    cursor: pointer;
+}
+
+.right {
+    cursor: pointer;
+}
+
+.button {
+    background-color: var(--darkblue);
+}
+
+.button:hover {
+    background-color: var(--red);
+    color: var(--color-text-inverted);
+    cursor: pointer;
+    transition: color 1s ease, background-color 1s ease;
+}
+
+.fill {
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.buttonwrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.large {
+    margin: 6px;
+    padding: 6px;
+    margin-right: 9px;
+    padding-right: 9px;
+}
+
+.iconxl {
+    background-color: black;
+    border-radius: 4px;
+    margin: 6px;
+    padding: 6px;
+    margin-right: 9px;
+    padding-right: 9px;
+    width: 80px;
+    position: relative;
+    cursor: pointer;
+    max-height: 116px;
+    max-width: 100px;
+}
+
+.svg {
+    max-width: 100%;
+    max-height: 100%;
+    display: relative;
+  }
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  }
+  
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    font-family: "Roboto Flex", "Helvetica Neue", Helvetica, Arial, sans-serif; 
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+  
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 999;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -20px;
+  
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  /* Tooltip arrow */
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -45px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  } 
+
+  .selected {
+    background-color: var(--offset);
+    border: 1px var(--red) solid;
+    color: var(--color-text);
+  }
+
+  .simplevaluexl {
+    text-align: center;
+    font-size: smaller;
+    font-variant: small-caps;
+  }
+
+.green {
+    background-color: var(--green) !important;
+}
+
+.red {
+    background-color: var(--red) !important;
+    color: var(--light);
+}
+
+.yellow {
+  background-color: gold !important;
+  color: var(--dark);
+}
+
+.right {
+    justify-self: flex-end;
+    margin-left: auto;
+}

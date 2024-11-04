@@ -1,0 +1,50 @@
+.main {
+    height: 100vh;
+    overflow-y: auto;
+    color: var(--color-text);
+}
+
+.statsflex {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    flex-wrap: wrap;
+    padding: 4px;
+}
+
+.scenetile{
+    height: 120px;
+    min-width: 100px;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1em;
+    border-radius: 10px;
+    background-color: var(--tan);
+    padding: 8px;
+}
+
+.scenetile:hover {
+    cursor: pointer;
+    background-color: var(--hover);
+}
+
+.scenetile > img {
+    height: 100px;
+    width: 100px;
+    min-width: 100px;
+    min-height: 100px;
+    margin: auto;
+    text-align: center;
+}
+
+.scenetile > div {
+    height: 20px;
+    color: var(--color-text);
+}
+
+.scenerow {
+    display: flex;
+    flex-wrap: wrap;
+}

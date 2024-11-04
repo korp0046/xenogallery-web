@@ -1,0 +1,67 @@
+.savebutton {
+    position: relative;
+    width: 50vw;
+    height: 40px;
+    background-color: green;
+    border-radius: 0 0 10px 10px;
+    margin-left: 25vw;
+    text-align: center;
+    font-size: x-large;
+}
+
+.savebutton:hover {
+    background-color: var(--hover);
+    cursor: pointer;
+}
+
+.savebutton:active {
+    background-color:blue;    
+}
+
+.buttonwrapper {
+    display: flex;
+}
+
+.savebutton > .save {
+    background-color: green;
+}
+
+.savebutton > .delete {
+    background-color: red;
+}
+
+.savebutton > .export {
+    background-color: blue;
+}
+
+
+.savebutton > button:hover {
+    background-color: var(--hover);
+    cursor: pointer;
+}
+
+.savebutton > button:active {
+    background-color:blue;    
+}
+
+.flexwrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main {
+    width: 100%;
+    overflow-y: scroll;
+    --ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+  
+.main::-webkit-scrollbar {
+    display: none;
+}
+
+.innerbox {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}

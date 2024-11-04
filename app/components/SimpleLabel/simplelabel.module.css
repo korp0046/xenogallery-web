@@ -1,0 +1,237 @@
+.simpleitem{
+    display: flex;
+    flex-direction: row;
+    padding-right: 8px;
+}
+
+.simpleitemxl {
+  height: 110px;
+  width: 100px;
+  color: var(--color-text);
+  font-variant: small-caps;
+  position: relative;
+}
+
+.simpleitemxs {
+  height: 24px;
+  width: 24px;
+  position: relative;
+}
+
+.simplelabel{
+    font-weight: bold;
+    padding-right: 4px;
+}
+
+.simplevalue{
+  margin-top: auto;
+  margin-bottom: auto;
+  text-align: center;
+}
+ 
+ 
+ /* Tooltip container */
+ .tooltip {
+    position: relative;
+  }
+  
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    font-family: "Roboto Flex", "Helvetica Neue", Helvetica, Arial, sans-serif; 
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+  
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 999;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -20px;
+  
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  /* Tooltip arrow */
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -45px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  } 
+
+  .basictable {
+
+  }
+
+  td.basictable {
+    text-align: center;
+  }
+
+  div.simpleimg {
+    cursor: pointer;
+
+  }
+
+  .simpleimg {
+    height: 50px;
+    width: 50px;
+    padding-right: 4px;
+    cursor: pointer;
+  }
+
+  .simpleimg svg {
+    height: 48px !important;
+    width: 48px !important;
+    cursor: pointer;
+  }
+
+  .simpleimgs {
+    height: 34px;
+    width: 34px;
+    padding-right: 4px;
+    cursor: pointer;
+  }
+
+  .simpleimgs svg {
+    height: 32px !important;
+    width: 32px !important;
+    cursor: pointer;
+  }
+
+  .simpleimg:hover svg circle {
+    animation: pulse 1s infinite linear;
+  }
+
+  
+
+  .selected > div {
+    border: 1px var(--hover) solid;
+    border-radius: 5px;
+  }
+
+  @keyframes pulse {
+    0% {
+        filter: contrast(50%);
+    }
+    100% {
+        filter: contrast(200%);
+    }
+}
+
+.simpleimgxl {
+  height: calc(100%-18px);
+  width: 100%;
+  padding-right: 4px;
+  cursor: pointer;
+  display: relative;
+}
+
+.simpleimgxs {
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+  display: relative;
+  background-color: var(--darkblue);
+  border-radius: 4px;
+  margin: 4px;
+  margin-right: 8px;
+}
+
+.simpleimgxl svg {
+  height: 92px !important;
+  width: 92px !important;
+  cursor: pointer;
+}
+
+.simpleimgxs svg {
+  height: 24px !important;
+  width: 24px !important;
+  cursor: pointer;
+}
+
+.invert svg {
+  filter: invert(100%);
+}
+
+.simpleimgxl:hover svg circle {
+  animation: pulse 1s infinite linear;
+}
+
+.simpleimgxs:hover {
+  background-color: var(--green);
+}
+
+.active svg rect {
+  filter: contrast(20%);
+}
+
+.simplevaluexl {
+  position: absolute;
+  bottom: 0;
+  width: 92px;
+  text-align: center;
+  font-size: smaller;
+}
+
+.simplevaluexs {
+  position: absolute;
+  bottom: 0;
+  width: 36px;
+  text-align: center;
+  font-size: smaller;
+}
+
+.simpleimgxl:hover svg circle {
+  animation: pulse 1s infinite linear;
+}
+
+.simpleimgxl:hover svg rect {
+  animation: pulse 1s infinite linear;
+}
+
+.tinyimg {
+  height: 20px;
+  width: 20px;
+  padding: 0px;
+  margin: 0px;
+}
+
+span.flag {
+  background-color: var(--darkblue);
+  border-radius: 4px;
+  margin: 2px 4px 2px 2px;
+  padding: 2px;
+  color: white;
+  font-size: x-small;
+}
+
+.tinydark {
+  background-color: var(--dark);
+  border-radius: 4px;
+  text-align:center;
+  height: 20px;
+  width: 20px;
+}
+
+.hover:hover {
+  background-color: var(--offset);
+  cursor: pointer;
+  border-radius: 4px;
+}

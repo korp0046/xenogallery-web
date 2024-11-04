@@ -1,0 +1,29 @@
+.main {
+    overflow-y: auto;
+    color: var(--color-text);
+    --ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+.wrapper {
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    color: var(--color-text);
+    --ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.wrapper .usergrid:nth-child(odd) {
+    background-color: var(--color-background-alt);
+}
+
+.usergrid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+}
+
+.usergrid:hover {
+    cursor: pointer;
+    background-color: pink !important;
+}

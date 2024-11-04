@@ -1,0 +1,7 @@
+.default { 
+    color: blue;
+}
+
+.farback{
+    z-index: -10;
+}

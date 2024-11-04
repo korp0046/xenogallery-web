@@ -1,0 +1,53 @@
+.wrapper {
+    background-color: var(--color-background);
+}
+
+.table {
+    background-color: var(--color-background);
+}
+
+tbody.table tr:nth-child(odd) {
+    background-color: var(--color-background-alt);
+}
+
+.editflexbody {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 4px;
+}
+
+.editflexitem {
+    max-width: 128px;
+    background-color: var(--offset);
+    border-radius: 4px;
+    padding: 2px;
+}
+
+.editflexlabel {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.center > div {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.center > div > div{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bigvalue {
+    font-size: larger;
+}

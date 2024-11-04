@@ -1,0 +1,131 @@
+nav.rightnav {
+    height: 100vh;
+    width: min(400px, 100vw);
+    position: fixed;
+    right: 0px;
+    z-index: 100;
+    transition: all 1s;
+    display: grid;
+    grid-template-columns: 24px auto;
+    grid-column-gap: 0px;
+}
+
+.close {
+  width: 24px;
+  max-width: 24px;
+}
+
+.body {
+    background-color: var(--color-background);
+    margin: 0px;
+    padding: 0px;
+    height: 100vh;
+    padding: 2px;
+    display: grid;
+    grid-template-rows: 36px 96px auto;
+    grid-column-gap: 0px;
+}
+
+.navbody {
+  overflow-y: auto;
+  --ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  height: 100%;
+}
+
+.navbody > div {
+  overflow-y: auto;
+  --ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  height: 100%;
+}
+
+.rightcontrol {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    padding: 0px;
+    transform: translateX(2px);
+}
+
+.rightcontrol > div {
+    background-color: var(--darkblue);
+    margin: 0px;
+    padding: 0px;
+    cursor: pointer;
+    pointer-events: all;
+}
+
+.navheader {
+    color: var(--darkblue);
+    font-size: large;
+    display: flex;
+  }
+  
+  .tabpanel {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .tabpanel > div {
+    flex-grow: 1;
+    cursor: grab;
+  }
+  
+  .activetab {
+    background-color: var(--tan);
+    color: var(--darkblue);
+  }
+
+  .navinner {
+    max-height: 100vh;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .datatable {
+    width: 100%;
+  }
+  
+  .datatable tr:nth-of-type(even) {
+    background-color: var(--hint-green);
+  }
+  
+  .datarowcell {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 24px auto 24px 24px;
+    gap: 4px;
+  }
+
+  .datarowcellinit {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 48px auto 24px 24px;
+    gap: 4px;
+  }
+  
+  .datarowcellxl {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 24px auto 24px 24px 24px;
+    gap: 4px;
+  }
+  
+  .navinner::-webkit-scrollbar {
+    display: none;
+  }
+
+.unselectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}

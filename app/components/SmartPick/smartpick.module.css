@@ -1,0 +1,10 @@
+.main {
+    margin: auto;
+}
+
+.overflow {
+    width: min(1024px, 100vw);
+    margin: auto;
+    max-height: 100vh;
+    overflow-y: auto;
+}

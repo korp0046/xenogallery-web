@@ -1,0 +1,94 @@
+.tagwrapper {
+    margin-right: 4px;
+    margin-top: 6px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 4px;
+    padding-right: 4px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 750;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tagwrapperv {
+    margin-right: 4px;
+    margin-top: 6px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 4px;
+    padding-right: 4px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 750;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.tagwrapperalt {
+    margin-right: 4px;
+    margin-top: 6px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 4px;
+    padding-right: 4px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 750;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tagsuperwrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.tag {
+    text-rendering: optimizeLegibility;
+    align-items: center;
+    background-color: var(--primary);
+    border-radius: 2px;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.5);
+    background: #222f3e;
+    color: #e5e5e5;
+    font-family: var(--sans-serif);
+    font-size: var(--font-size-9);
+    font-weight: 500;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    margin-right: 3px;
+    padding-right: 3px;
+    padding: 0.0em 0.5em 0.0em 0.5em;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.clickable:hover {
+    filter: invert(100%);
+}
+
+.large {
+    margin: 6px;
+    padding: 6px;
+    margin-right: 9px;
+    padding-right: 9px;
+}
+
+.selectedTag {
+    background: #cc8f2c;
+}
+  
+.excludedTag {
+    background: #801c31;
+}
+
+.label {
+    margin-top: 8px;
+    font-weight: bold;
+}

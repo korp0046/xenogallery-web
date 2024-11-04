@@ -1,0 +1,172 @@
+.container {
+  display: grid;
+  grid-template-areas:
+    'nav'
+    'header'
+    'main'
+    'footer';
+  grid-template-rows: auto auto 1fr 36px;
+  align-items: center;
+  height: 100vh;
+}
+
+.header {
+  grid-area: header;
+}
+
+.navheader {
+  color: var(--darkblue);
+  font-size: large;
+}
+
+.tabpanel {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.tabpanel > div {
+  flex-grow: 1;
+  cursor: grab;
+}
+
+.activetab {
+  background-color: var(--tan);
+  color: var(--darkblue);
+}
+
+.navbody { 
+  background-color: var(--color-background);
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.main {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  height: calc(100vh - 48px);
+}
+
+.header,
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer {
+  grid-area: footer;
+  justify-self: center;
+}
+
+.nav {
+  font-size: 1em;
+  position: fixed;
+  top:0px;
+  z-index: 1000;
+  max-height: 100vh;
+}
+
+.navinner {
+  max-height: 100vh;
+  overflow-y: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.datatable {
+  width: 100%;
+}
+
+.datatable tr:nth-of-type(even) {
+  background-color: var(--hint-green);
+}
+
+.datarowcell {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 24px auto 24px 24px;
+  gap: 4px;
+}
+
+.datarowcellxl {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 24px auto 24px 24px 24px;
+  gap: 4px;
+}
+
+.navinner::-webkit-scrollbar {
+  display: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.link {
+  color: #704cb6;
+}
+
+.link.active {
+  text-decoration: underline;
+}
+
+.logo {
+  height: 40vmin;
+  pointer-events: none;
+  max-width: min(100vw,720px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo {
+    animation: logo-float infinite 3s ease-in-out;
+  }
+}
+
+@keyframes logo-float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+label.h1 {
+  font: 400 24px 'Roboto Flex';
+}
+
+label.h2 {
+  font: 400 18px 'Roboto Flex';
+}
+
+.reader {
+  padding: 0;
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max(50vw,min(100%,1024px));
+  background: var(--color-background-t);
+  z-index: 1;
+  min-height: 100vh;
+  max-width: max(50vw,min(100%,1024px));
+}
+
+
+.containerrow {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rowlabel {
+  color: var(--color-text);
+  font: 400 12px 'Roboto Flex';
+  line-height: 24px;
+}

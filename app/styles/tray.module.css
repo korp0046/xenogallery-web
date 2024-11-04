@@ -1,0 +1,76 @@
+@media (orientation: landscape) {
+    nav.tray {
+        width: 1024px;
+        height: 66.6666vh;
+        background-color: var(--color-background);
+        position: fixed;
+        transition: height 1s ease, top 1s ease;
+        top: 33.3333vh;
+        left: calc((100vw - 1024px) / 2);
+        z-index: 3;
+        pointer-events: auto;
+    }
+    
+    nav.tray.close {
+      top: calc(100vh - 24px);
+      height: 0;
+    }
+    
+    div.control {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 24px;
+        width: 1024px;
+        align-items: center;
+        text-align: center;
+        transition: height 1s ease, top 1s ease;
+    }
+  }
+  
+  @media (orientation: portrait) {
+    nav.tray {
+        width: 100vw;
+        height: 66.6666vh;
+        background-color: var(--color-background);
+        position: fixed;
+        transition: height 1s ease, top 1s ease;
+        top: 33.3333vh;
+        left: 0px;
+        z-index: 3;
+        pointer-events: auto;
+    }
+    
+    nav.tray.close {
+      top: calc(100vh - 24px);
+      height: 0;
+    }
+    
+    div.control {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 24px;
+        width: 100vw;
+        align-items: center;
+        text-align: center;
+        transition: height 1s ease, top 1s ease;
+    }
+}
+    
+div.body {
+    margin-top: 24px;
+    height: 100%;
+    border-left: 1px var(--red) solid;
+    border-right: 1px var(--red) solid;
+    overflow-y: scroll;
+    --ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    padding-bottom: 24px;
+}
+
+div.flex {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}

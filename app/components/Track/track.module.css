@@ -1,0 +1,39 @@
+.main {
+    color: black;
+    width: 100%;
+    margin: 2px;
+    padding: 2px;
+    border-top: 2px solid black;
+}
+
+.trackheader {
+    display: grid;
+    grid-template-columns: auto 30px 30px;
+    width: 100%;
+    min-height: 30px;
+}
+
+.linearmain {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.linearslice {
+    color: var(--light);
+    margin: 2px;
+    padding: 2px;
+    border-radius: 2px;
+    background-color: var(--red);
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    min-width: 22px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.linearsliceselect {
+    background-color: var(--light);
+    color: var(--dark);
+}

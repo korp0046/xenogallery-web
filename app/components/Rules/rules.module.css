@@ -1,0 +1,326 @@
+.title0 {
+    color: var(--light);
+    font-family: "CharisSIL";
+    background-color: var(--red);
+    text-align: center;
+    font-size: 36px;
+    position: relative;
+    font-variant: small-caps;
+}
+
+.title1 {
+    color: var(--light);
+    font-family: "CharisSIL";
+    background-color: var(--red);
+    text-align: center;
+    font-size: 32px;
+    position: relative;
+    font-variant: small-caps;
+    display: grid;
+    grid-template-columns: min-content auto min-content;
+    padding: 0px 12px 0px 12px;
+}
+
+.title2 {
+    font-family: "CharisSIL";
+    text-align: center;
+    font-size: 28px;
+    position: relative;
+    font-variant: small-caps;
+    border-bottom: 4px var(--red) solid;
+    display: grid;
+    grid-template-columns: min-content auto min-content;
+    padding: 0px 12px 0px 12px;
+
+}
+
+.title3 {
+    font-family: "CharisSIL";
+    text-align: center;
+    font-size: 24px;
+    position: relative;
+    font-variant: small-caps;
+    border-bottom: 4px var(--red) solid;
+    display: grid;
+    grid-template-columns: min-content auto min-content;
+    padding: 0px 12px 0px 12px;
+}
+
+.title4 {
+    font-family: "CharisSIL";
+    text-align: center;
+    font-size: 20px;
+    position: relative;
+    font-variant: small-caps;
+    border-bottom: 4px var(--red) solid;
+    display: grid;
+    grid-template-columns: min-content auto min-content;
+    padding: 0px 12px 0px 12px;
+}
+
+.title5 {
+    font-family: "CharisSIL";
+    text-align: center;
+    font-size: 16px;
+    position: relative;
+    font-variant: small-caps;
+    border-bottom: 4px var(--red) solid;
+    display: grid;
+    grid-template-columns: min-content auto min-content;
+    padding: 0px 12px 0px 12px;
+}
+
+.brief0 {
+    font-size: 20px;
+    font-style: italic;
+}
+
+.rulebody {
+    color: var(--color-text);
+    padding-bottom: 24px;
+    font-family: "CharisSIL", system-ui, sans-serif;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+.rulebody > h1 {
+    color: var(--color-text);
+    font-family: "CharisSIL";
+    font-size: 30px;
+    padding-left: 8px;
+}
+
+.rulebody > h2 {
+    color: var(--color-text);
+    font-family: "CharisSIL";
+    font-size: 26px;
+    padding-left: 8px;
+    margin-top: -4px;
+    margin-bottom: -8px;
+}
+
+.rulebody > h3 {
+    color: var(--color-text);
+    font-family: "CharisSIL";
+    font-size: 22px;
+    padding-left: 8px;
+    margin-top: -3px;
+    margin-bottom: -7px;
+}
+
+.rulebody > h4 {
+    color: var(--color-text);
+    font-family: "CharisSIL";
+    font-size: 18px;
+    padding-left: 8px;
+    margin-top: -2px;
+    margin-bottom: -6px;
+}
+
+.rulebody > p {
+    color: var(--color-text);
+    font-size: 16px;
+}
+
+.rulebody > p > strong {
+    color: var(--color-text);
+    font-size: 16px;
+}
+
+.rulebody > p > em {
+    color: var(--color-text);
+    font-size: 16px;
+}
+
+.rulebody > ul {
+    color: var(--color-text);
+    font-size: 16px;
+}
+
+.rulebody > li {
+    color: var(--color-text);
+    font-size: 16px;
+}
+
+.rulebody a {
+    color: var(--color-text);
+    background-color: var(--red-transparent);
+    border-radius: 5px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.rulebody * {
+    scroll-behavior: smooth;
+}
+
+
+
+.rulemain {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    overflow-y: auto;    
+    -ms-overflow-style: auto;  /* IE and Edge */
+    scrollbar-width: auto;  /* Firefox */
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    height: calc(100vh - 54px);
+    min-height: calc(100vh - 54px);
+    overflow-y: auto;
+    transition: all 1s;
+    
+}
+
+.sectionwrapper {
+    overflow-y: auto;    
+    -ms-overflow-style: auto;  /* IE and Edge */
+    scrollbar-width: auto;  /* Firefox */
+}
+
+.sectionwrapper * {
+    page-break-inside: avoid;
+    page-break-after: avoid;
+    page-break-before: avoid;
+}
+
+.parentwrapper {
+    position: relative;
+}
+
+.childrenwrapper {
+    position: relative;
+}
+
+.dynamicimg {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+    height: min(633px, calc(100vw / 1.618));
+}
+
+.flexend {
+    align-items: flex-end;
+}
+
+.dynamicimg > img {
+    max-width: min(1024px, 100vw);
+}
+
+.depth0 {
+    
+}
+
+.depth1 {
+    
+}
+
+.depth2 {
+    
+}
+
+.depth3 {
+    
+}
+
+.back {
+    width: 100%;
+}
+
+.back > button {
+    float: right;
+    display: flex;
+    margin: auto;
+}
+
+.nav {
+    max-width: 100%;
+    position: relative;
+    width: 100%;
+    height: 30px;
+}
+
+div.accordionwrapper {
+    width: min(1024px, 100vw);
+}
+
+div.linearwrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    justify-content: left;
+    width: 100%;
+}
+
+div.accordionblock {
+    
+}
+
+div.accordionitems {
+}
+
+div.accordionkey {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: var(--red);
+}
+
+.highlight {
+    background-color: var(--darkblue);
+}
+
+.accordionbutton {
+    cursor: pointer;
+    min-width: 24px;
+    text-align: center;
+    background-color: var(--darkblue);
+    border-radius: 4px;
+    margin-bottom: 4px;
+    margin-left: 4px;
+    color: white;
+}
+
+.accordionbutton:hover {
+    background-color: var(--green);
+}
+
+.quickwrapper {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr auto 1fr;
+}
+
+.quickwrapper > button {
+    width: 100%;
+}
+
+.quickwrapper > div {
+    width: 128px;
+}
+
+.navrow {
+    margin-bottom: 4px;
+    padding-bottom: 4px;
+    border-bottom: 1px var(--red) solid;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    max-width: min(100%, 100vw);
+    flex-wrap: wrap;
+}
+
+.navcell {
+    border: 1px black solid;
+    padding: 0px 4px 0px 4px;
+    cursor: pointer;
+}
+
+.navcell:hover {
+    background-color: var(--hover);
+}

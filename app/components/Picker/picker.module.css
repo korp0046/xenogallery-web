@@ -1,0 +1,16 @@
+.grid3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 128px;
+    width: 128px;
+}
+
+.tinyimg {
+    height: 32px;
+    width: 32px;
+}
+
+.selected {
+    border: 1px red solid;
+}

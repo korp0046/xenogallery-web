@@ -1,0 +1,92 @@
+
+
+div.table {
+    width: max(512px, min(1024px, 100vw));
+    min-width: 512px;
+    overflow-x: scroll;
+}
+
+td.table {
+    display: flex;
+    flex-direction: row;
+}
+
+table.table {
+    width: 100%;
+    min-width: 512px;
+}
+
+tbody.table tr:not(.expanded):nth-child(odd) {
+    background-color: var(--color-background-alt);
+}
+
+tr.table:hover {
+    background-color: var(--bga) !important;
+    cursor: pointer;
+}
+
+div.filteritem {
+    padding: 4px;
+    background-color: var(--color-background-alt);
+    cursor: pointer;
+}
+
+div.filterselect {
+    display: flex;
+    gap: 4px;
+}
+
+div.filterrow {
+    display: flex;
+    gap: 4px;
+    padding-bottom: 4px;
+    flex-wrap: wrap;
+}
+
+.selected {
+    background-color: var(--darkblue) !important;
+    color: white !important;
+}
+
+.negative {
+    background-color: var(--red) !important;
+    color: white !important;
+}
+
+.positive {
+    background-color: var(--darkblue) !important;
+    color: white !important;
+}
+
+.expanded {
+    
+}
+
+.border {
+    border: 1px var(--red) solid;
+    padding: 4px;
+}
+
+.wrapper {
+    max-height: calc(100vw - 24px);
+    width: 100%;
+    height: calc(100vh - 48px);
+    min-height: calc(100vh - 48px);
+    overflow-y: auto;
+    transition: all 1s;
+}
+
+.compact {
+    height: calc(33.3333vh - 24px);
+    min-height: calc(33.3333vh - 24px);
+}
+
+.compactm {
+    height: calc(33.3333vh - 5vh - 24px);
+    min-height: calc(33.3333vh - 5vh - 24px);
+}
+
+.disabled {
+    cursor: auto;
+    color: var(--red);
+}

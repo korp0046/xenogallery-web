@@ -1,0 +1,12 @@
+.inner {
+    background-color: var(--red);
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.outer {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    height: 100%;
+}
