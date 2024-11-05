@@ -7,12 +7,16 @@ import { useEffect, useState } from 'react';
 import {
   ViewBox,
   assetSlice,
+  gallerySlice,
+  getGalleryListAsync,
   getGameAsync,
   getRoomAsync,
   navSlice,
+  postGalleryAsync,
   roomSlice,
   sceneSlice,
   selectActiveRoom,
+  selectGalleryList,
   selectRoomState,
   selectUsername,
   selectViewBox,
@@ -27,41 +31,39 @@ import { EditorGroupDiv } from '../Editors';
 import Loading from '../Loading/Loading';
 import debounce from 'debounce';
 import _ from 'lodash';
+import { useRouter } from 'next/navigation';
 //import Chat from '../Chat/Chat';
 
 let lastVersion = 0;
 
 export default function GalleryRoot(props: any){
+    const [newGallery, setNewGallery] = useState("");
+    const router = useRouter();
     const roomId = props.slug;
     const dispatch = useDispatch();
     const activeRoom = useSelector(selectActiveRoom);
     const roomState = useSelector(selectRoomState);
     const username = useSelector(selectUsername);
+    const galleryList = useSelector(selectGalleryList);
 
     useEffect(()=>{
-      if(username && roomId){
-        dispatch(getRoomAsync(roomId));
-      }
-    }, [activeRoom, username]);
-
-    useEffect(()=>{
-      if(roomState){
-        dispatch(roomSlice.actions.setActiveRoom(roomId));
-      }
-    }, [roomState]);
-
-    
-
-    const viewAsset = (doc: any) => {
-      dispatch(assetSlice.actions.setAssetView(doc));
-      dispatch(navSlice.actions.setTrayPage('assetview'));
-      dispatch(navSlice.actions.setTrayState(true));
-  }
+      dispatch(getGalleryListAsync(roomId));
+    }, []);
   
     if(true){
       return (
         <div className={stylespage.root}>
-          THE GALLERY ROOT
+          <div>THE GALLERY ROOT</div>
+          <div>
+            <div>{newGallery}</div>
+            <button onClick={()=>dispatch(postGalleryAsync({action: 'create', gallery: newGallery}))}>CREATE NEW GALLERY</button>
+            <input type="text" value={newGallery} onChange={(e)=>setNewGallery(e.target.value)} ></input>
+          </div>
+          {
+          galleryList.map((el: any)=> {
+            return(<div><button onClick={()=>router.push(`/gallery/${el.name}`)}>GO</button>{JSON.stringify(el)}</div>);
+          })
+          }
         </div>
       )
 

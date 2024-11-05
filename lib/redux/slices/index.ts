@@ -12,3 +12,4 @@ export * from './livesceneSlice';
 export * from './gamedocSlice';
 export * from './genSlice';
 export * from './scratchSlice';
+export * from './gallerySlice';

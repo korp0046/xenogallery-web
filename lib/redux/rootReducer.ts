@@ -1,5 +1,5 @@
 /* Instruments */
-import { counterSlice, gamedocSlice, chatSlice, userSlice, roomSlice, gameSlice, modalSlice, navSlice, assetSlice, sceneSlice, liveactorSlice, livesceneSlice, genSlice, scratchSlice } from './slices';
+import { counterSlice, gamedocSlice, chatSlice, userSlice, roomSlice, gameSlice, modalSlice, navSlice, assetSlice, sceneSlice, liveactorSlice, livesceneSlice, genSlice, scratchSlice, gallerySlice } from './slices';
 
 export const reducer = {
   counter: counterSlice.reducer,
@@ -15,5 +15,6 @@ export const reducer = {
   livescene: livesceneSlice.reducer,
   gamedoc: gamedocSlice.reducer,
   gen: genSlice.reducer,
-  scratch: scratchSlice.reducer
+  scratch: scratchSlice.reducer,
+  gallery: gallerySlice.reducer
 }
