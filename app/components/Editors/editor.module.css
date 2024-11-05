@@ -311,6 +311,7 @@ div.check {
 .imagedivpreview {
     display: flex;
     flex-wrap: wrap;
+    position: relative;
 }
 
 .imgdiv {
@@ -323,17 +324,16 @@ div.check {
 
 .imgimg {
     margin: auto;
+    height: 512px;
+    width: 512px;
+    object-fit: contain;
 
-}
-
-.imagedivpreview {
-    display: flex;
-    flex-wrap: wrap;
 }
 
 .imgdivsmall {
     height: 256px;
     width: 256px;
+    object-fit: contain;
 }
 
 .imgdivsmall:hover{

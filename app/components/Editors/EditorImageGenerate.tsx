@@ -1,3 +1,4 @@
+'use client';
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import styles from './editor.module.css';
@@ -149,13 +150,13 @@ function EditorImageGenerate(props: any) {
                     <div className={styles.imagedivpreview}>
                     {
                         data.map((el: any, idx: number)=> {
-                            return(<div className={styles.imgdivsmall} onClick={()=>props.updateImageFromDoc(el)} key={idx}><img className={styles.imgimgsmall} src={el.img} /></div>);
+                            return(<div className={styles.imgdivsmall} key={idx}><img className={styles.imgimgsmall} src={el.img} /></div>);
                         })
                     }
                     </div>
                     {
                         data.map((el: any, idx: number)=> {
-                            return(<div className={styles.imgdiv} onClick={()=>props.updateImageFromDoc(el)} key={idx}><img className={styles.imgimg} src={el.system.img} /></div>);
+                            return(<div className={styles.imgdiv} key={idx}><img className={styles.imgimg} src={el.system.img} /></div>);
                         })
                     }
                 </div>

@@ -4,6 +4,8 @@ import { getGalleryListAsync, getGalleryObjectsAsync, postGalleryAsync, updateOb
 import { AssetActor } from '@/lib/util/assetTypes';
 
 const initialState: GallerySliceState = {
+  scratch: null,
+  editor: false,
   gallerylist: [],
   objects: [],
   status: 'idle'
@@ -16,6 +18,12 @@ export const gallerySlice = createSlice({
   reducers: {
     recieveGalleryList: (state, action) => {
       console.log('recieveGalleryList', action);
+    },
+    setEditor: (state, action) => {
+      state.editor = action.payload;
+    },
+    setScratch: (state, action) => {
+      state.scratch = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -84,6 +92,8 @@ export const gallerySlice = createSlice({
 
 /* Types */
 export interface GallerySliceState {
+  scratch: any,
+  editor: boolean,
   gallerylist: Array<any>,
   objects: Array<any>,
   status: 'idle' | 'loading' | 'failed'

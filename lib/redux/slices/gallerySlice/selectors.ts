@@ -6,3 +6,5 @@ import type { ReduxState } from '@/lib/redux'
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
 export const selectGalleryList = (state: ReduxState) => state.gallery.gallerylist;
 export const selectGalleryObjects = (state: ReduxState) => state.gallery.objects;
+export const selectGalleryScratch = (state: ReduxState) => state.gallery.scratch;
+export const selectGalleryEditor = (state: ReduxState) => state.gallery.editor;

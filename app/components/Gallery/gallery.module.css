@@ -2,3 +2,85 @@
     color: var(--color-text);
     height: 100%;
 }
+
+.editbutton {
+    background-color: blue;
+    position: absolute;
+    border-radius: 25px;
+    height: 50px;
+    width: 50px;
+    top: 4px;
+    right: 4px;
+    color: white;
+    vertical-align: middle;
+    text-align: center;
+    padding-top: 12px;
+    filter: opacity(80%);
+}
+
+
+.linkbutton {
+    background-color: green;
+    position: absolute;
+    border-radius: 25px;
+    height: 50px;
+    width: 50px;
+    bottom: 4px;
+    left: 4px;
+    color: white;
+    vertical-align: middle;
+    text-align: center;
+    padding-top: 12px;
+    filter: opacity(80%);
+}
+
+.editbutton:hover {
+    background-color: orange;
+    cursor: pointer;
+    filter: opacity(100%);
+}
+
+.linkbutton:hover {
+    background-color: orange;
+    cursor: pointer;
+    filter: opacity(100%);
+}
+
+.gallerycardwrapper {
+    display: flex;
+    max-width: 100vw;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.gallerycard {
+    position: relative;
+}
+
+.gallerycardname {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+    max-width: 512px;
+    font-family: "CharisSIL";
+    padding: 4px;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.gallerycard > img {
+    object-fit: contain;
+}
+
+.galleryeditor {
+    position: fixed;
+    background-color: orange;
+    width: min(100vw, 512px);
+    height: min(100vh, 512px);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}

@@ -114,11 +114,10 @@ export default function TopNav(props: any) {
                 <div className={`${stylesbutton.button} ${tabOpen == null ? styles.opentab : ''}`} onClick={()=>{gotoRoute('/'); setNavTabOpen(null);}}>HOME</div>
                 { username ? <div className={`${stylesbutton.button} ${tabOpen == 'rooms' ? styles.opentab : ''}`} onClick={()=>gotoRoute('/rooms')}>ROOMS</div> : null }
                 <div className={`${stylesbutton.button} ${tabOpen == 'gallery' ? styles.opentab : ''}`} onClick={()=>setNavTabOpen('gallery')}>GALLERY</div>
-                <div className={`${stylesbutton.button} ${tabOpen == 'assets' ? styles.opentab : ''}`} onClick={()=>setNavTabOpen('assets')}>ASSETS</div>
+                <div className={`${stylesbutton.button} ${tabOpen == 'genai' ? styles.opentab : ''}`} onClick={()=>setNavTabOpen('genai')}>GENAI</div>
                 <div className={`${stylesbutton.button} ${tabOpen == 'rules' ? styles.opentab : ''}`} onClick={()=>setNavTabOpen('rules')}>RULES</div>
                 <div className={`${stylesbutton.button} ${tabOpen == 'about' ? styles.opentab : ''}`} onClick={()=>setNavTabOpen('about')}>ABOUT</div>
                 { username ? <div className={`${stylesbutton.button} ${tabOpen == 'user' ? styles.opentab : ''}`} onClick={()=>setNavTabOpen('user')}>USER</div> : <div onClick={()=>setNavTabOpen('login')}>LOGIN</div> }
-                { isSuperuser ? <div className={`${stylesbutton.button} ${tabOpen == 'admin' ? styles.opentab : ''}`} onClick={()=>setNavTabOpen('admin')}>ADMIN</div> : null }
             </div>
             <div className={`${styles.body}`}>
                 {
@@ -127,6 +126,9 @@ export default function TopNav(props: any) {
                         <SimpleIconButton text={`Logout: ${username}`} img={sheetIcons.user} action={()=>logout()}/>
                         { roomState ? <SimpleIconButton text={`Leave Room: ${roomState.name}`} action={()=>leaveRoom()} img={sheetIcons.exit}/> : null }
                         { gameState ? <SimpleIconButton text={`Leave Game: ${gameState.name}`} action={()=>leaveGame()} img={sheetIcons.exit}/> : null }
+                        { isSuperuser ? <SimpleIconButtonXL text={`Gamedocs`} img={uiIcons.rules} action={()=>gotoRoute('/admin/gamedocs')}/> : null }
+                        { isSuperuser ? <SimpleIconButtonXL text={`Users`} img={uiIcons.users} action={()=>gotoRoute('/admin/users')}/> : null }
+                        { isSuperuser ? <SimpleIconButtonXL text={`Images`} img={uiIcons.image} action={()=>openModal('images')}/> : null }
                         { false ? <DarkModeToggle /> : null }
                     </div>
                     : null
@@ -183,24 +185,9 @@ export default function TopNav(props: any) {
                     : null
                 }
                 {
-                    tabOpen == 'admin' ? 
+                    tabOpen == 'genai' ? 
                     <div className={`${styles.flex} ${styles.dropwrapper}`}>
-                            <SimpleIconButtonXL text={`Gamedocs`} img={uiIcons.rules} action={()=>gotoRoute('/admin/gamedocs')}/>
-                            <SimpleIconButtonXL text={`Users`} img={uiIcons.users} action={()=>gotoRoute('/admin/users')}/>
-                            <SimpleIconButtonXL text={`Images`} img={uiIcons.image} action={()=>openModal('images')}/>
-                        
-                            {/*
-
-                            <SimpleIconButtonXL text={`Roleplay`} img={uiIcons.basicscene} action={()=>openModal('basicscenes')}/>
-                            <SimpleIconButtonXL text={`Battle`} img={uiIcons.battlemap} action={()=>openModal('battlemaps')}/>
-                            <SimpleIconButtonXL text={`Exploration`} img={uiIcons.nodemap} action={()=>openModal('exploremaps')}/>
-                            <SimpleIconButtonXL text={`Pregens`} img={uiIcons.hero} action={()=>openModal('characters')}/>
-                            <SimpleIconButtonXL text={`Opponents`} img={uiIcons.opponent} action={()=>openModal('opponents')}/>
-                            <SimpleIconButtonXL text={`Personas`} img={uiIcons.persona} action={()=>openModal('personas')}/>
-                            <SimpleIconButtonXL text={`Equipment`} img={uiIcons.artifact} action={()=>openModal('items')}/>
-                            <SimpleIconButtonXL text={`Powers`} img={uiIcons.power} action={()=>openModal('powers')}/>
-                            <SimpleIconButtonXL text={`Events`} img={uiIcons.event} action={()=>openModal('events')}/>
-                */}
+                        <SimpleIconButtonXL text={`Gen Image`} img={uiIcons.basicscene} action={()=>gotoRoute('/genimg')}/>
                     </div>
                     : null
                 }

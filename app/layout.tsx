@@ -23,7 +23,6 @@ export default function RootLayout(props: React.PropsWithChildren) {
           <section className={styles.container}>
             <Modal />
             <TopNav />
-            <Tray />
             <RightNav />
             <main className={styles.main}>{props.children}</main>
             <Toaster />
