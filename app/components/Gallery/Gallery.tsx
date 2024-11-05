@@ -32,9 +32,37 @@ import Loading from '../Loading/Loading';
 import debounce from 'debounce';
 import _ from 'lodash';
 import KVEditor from '../KVEditor/KVEditor';
-//import Chat from '../Chat/Chat';
+import { useInView } from "react-intersection-observer";
 
 let lastVersion = 0;
+
+function GalleryCard(props:any){
+  const dispatch = useDispatch();
+  const galleryObjects = useSelector(selectGalleryObjects);
+  const data = props.data;
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 0,
+  });
+
+  const loadedObjCount = galleryObjects.length;
+
+  useEffect(()=>{
+    if(inView && loadedObjCount == (props.idx + 1) && loadedObjCount >= 9){
+      dispatch(getGalleryObjectsAsync({gallery: data.gallery, limit: 10, last: data.name, more: true}));
+    }
+  }, [inView]);
+
+
+  return(
+  <div key={props.idx} ref={ref}>
+    <div>{data.name}</div>
+    <img src={data.url}/>
+    <div><KVEditor orig={data.tags} gallery={data.gallery} name={data.name}/></div>
+  </div>
+  )
+
+}
 
 export default function Gallery(props: any){
     const galleryName = props.slug;
@@ -48,13 +76,10 @@ export default function Gallery(props: any){
     const gallery = params && params.slug ? params.slug : 'default';
 
     useEffect(()=>{
-      console.log('params', params);
       if(params && params.slug){
-        dispatch(getGalleryObjectsAsync({gallery: gallery}));
+        dispatch(getGalleryObjectsAsync({gallery: gallery, more: false}));
       }
     }, []);
-
-    console.log(galleryObjects);
   
     if(true){
       return (
@@ -62,12 +87,7 @@ export default function Gallery(props: any){
           THE GALLERY
           <div>
             {galleryObjects.map((el: any,idx: number)=>{
-              return(<div key={idx}>
-                <div>{el.name}</div>
-                <div><KVEditor orig={el.tags} gallery={gallery} name={el.name}/></div>
-                <button onClick={()=>dispatch(updateObjectTagsAsync({gallery: gallery, object: el.name, tags: {"testkey": "testvalue"}}))}>UPDATE</button>
-              </div>
-              )
+              return(<GalleryCard key={idx} idx={idx} data={el}/>)
             })}
           </div>
         </div>

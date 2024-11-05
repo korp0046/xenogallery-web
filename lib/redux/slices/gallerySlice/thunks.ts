@@ -72,7 +72,7 @@ export const getGalleryListAsync = createAppAsyncThunk(
     async (payload: any) => {
         const response = await doGetGalleryList(payload);
       // The value we return becomes the `fulfilled` action payload
-      return response;
+      return {request: payload, response: response};
     }
   )
 
@@ -82,7 +82,7 @@ export const getGalleryListAsync = createAppAsyncThunk(
     async (payload: any) => {
         const response = await doPostGallery(payload);
       // The value we return becomes the `fulfilled` action payload
-      return response;
+      return {request: payload, response: response};
     }
   )
 
@@ -91,7 +91,7 @@ export const getGalleryListAsync = createAppAsyncThunk(
     async (payload: any) => {
         const response = await doGetGalleryObjects(payload);
       // The value we return becomes the `fulfilled` action payload
-      return response;
+      return {request: payload, response: response};
     }
   )
 

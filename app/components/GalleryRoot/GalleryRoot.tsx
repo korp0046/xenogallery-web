@@ -60,8 +60,8 @@ export default function GalleryRoot(props: any){
             <input type="text" value={newGallery} onChange={(e)=>setNewGallery(e.target.value)} ></input>
           </div>
           {
-          galleryList.map((el: any)=> {
-            return(<div><button onClick={()=>router.push(`/gallery/${el.name}`)}>GO</button>{JSON.stringify(el)}</div>);
+          galleryList.map((el: any, idx: number)=> {
+            return(<div key={idx}><button onClick={()=>router.push(`/gallery/${el.name}`)}>GO</button>{JSON.stringify(el)}</div>);
           })
           }
         </div>

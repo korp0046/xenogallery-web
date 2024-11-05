@@ -25,7 +25,7 @@ export const gallerySlice = createSlice({
         })
         .addCase(getGalleryListAsync.fulfilled, (state, action) => {
           if(action.payload){
-            state.gallerylist = action.payload.map((el: any, idx: number)=>{
+            state.gallerylist = action.payload.response.map((el: any, idx: number)=>{
               return el;
             });
           }
@@ -37,7 +37,7 @@ export const gallerySlice = createSlice({
         })
         .addCase(postGalleryAsync.fulfilled, (state, action) => {
             if(action.payload){
-            state.gallerylist = action.payload.map((el: any, idx: number)=>{
+            state.gallerylist = action.payload.response.map((el: any, idx: number)=>{
                 return el;
             });
             }
@@ -49,9 +49,16 @@ export const gallerySlice = createSlice({
         })
         .addCase(getGalleryObjectsAsync.fulfilled, (state, action) => {
             if(action.payload){
-            state.objects = action.payload.map((el: any, idx: number)=>{
-                return el;
-            });
+              if(action.payload.request.more){
+                for(let item of action.payload.response){
+                  state.objects.push(item);
+                }
+              } else {
+                state.objects = action.payload.response.map((el: any, idx: number)=>{
+                  return el;
+                });
+              }
+
             }
             state.status = 'idle';
         })
