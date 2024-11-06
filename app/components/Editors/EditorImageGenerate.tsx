@@ -6,13 +6,75 @@ import stylesgen from './generate.module.css';
 import _ from 'lodash';
 import { useDispatch, useSelector } from "react-redux";
 import { genSlice, selectControlnets, selectHeight, selectImgData, selectLastNegPrompt, selectLastPrompt, selectModels, selectNumImages, selectPreset, selectToken, selectWidth } from "@/lib/redux";
+import { toast } from "react-toastify";
 
 function ControlNetCard(props: any){
-    const dispatch = useDispatch();
     const data = props.data;
+    const dispatch = useDispatch();
+
+    const setPreprocessor = (keyString:string) => {
+        let keyInt = 67; //default to style
+        switch (keyString) {
+            case 'style':
+                keyInt = 67;
+                break;
+            case 'character':
+                keyInt = 133;
+                break;
+            case 'content':
+                keyInt = 100;
+                break;
+            case 'edge':
+                keyInt = 19;
+                break;
+            case 'depth':
+                keyInt = 20;
+                break;
+            case 'pose':
+                keyInt = 21;
+                break;
+            case 'text':
+                keyInt = 22;
+                break;
+            default:
+                keyInt = 67;
+                toast("Preprocessor defaulting to 67");
+
+        dispatch(genSlice.actions.updateControlnet({...data, preprocessorId: keyInt}));
+
+        }
+    }
+
+    const setStrength = (keyString: string) => {
+        let keyOutput = "Mid"; //default to style
+        switch (keyString) {
+            case 'low':
+                keyOutput = "Low";
+                break;
+            case 'mid':
+                keyOutput = "Mid";
+                break;
+            case 'high':
+                keyOutput = "High";
+                break;
+            default:
+                keyOutput = "Mid";
+                toast("Preprocessor defaulting to Mid strength.");
+        dispatch(genSlice.actions.updateControlnet({...data, strengthType: keyOutput}));
+    }
+
     return(
     <div className={stylesgen.controlnetcard}>
-        <div onClick={()=>dispatch(genSlice.actions.popControlnet(data.name))}>X</div>
+        <button onClick={()=>dispatch(genSlice.actions.popControlnet(data.name))}>X</button>
+        <select className={styles.inputnum} value={data.preprocessorId} onChange={(e)=>setPreprocessor(e.target.value)}>
+            <option value="style">Style</option>
+            <option value="character">Character</option>
+            <option value="content">Content</option>
+            <option value="edge">Edge</option>
+            <option value="depth">Depth</option>
+            <option value="pose">Pose</option>
+            <option value="text">Text</option>
+        </select>
         <img src={data.url} />
     </div>
     )

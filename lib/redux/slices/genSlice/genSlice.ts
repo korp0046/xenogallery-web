@@ -56,14 +56,23 @@ export const genSlice = createSlice({
         }
         controlnetdoc["initImageId"] = foundInitImage.Value;;
         controlnetdoc["initImageType"] = "UPLOADED";
-        controlnetdoc["initImageType"] = "UPLOADED";
         controlnetdoc["preprocessorId"] = 67;
         controlnetdoc["strengthType"] = "High";
-        controlnetdoc["influence"] = 0.64;
+        controlnetdoc["influence"] = 0.5;
         state.controlnets.push(controlnetdoc);
     },
     popControlnet: (state, action) => {
         state.controlnets = state.controlnets.filter((el: any)=> el.name != action.payload);
+    },
+    updateControlnet: (state, action) => {
+      state.controlnets = state.controlnets.map((el: any, idx: number)=>{
+        if(el.name == action.payload.name){
+          return {...el, ...action.payload};
+        } else {
+          return el;
+        }
+      });
+    }
     }
   }
 });
