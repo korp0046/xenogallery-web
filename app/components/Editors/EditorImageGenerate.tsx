@@ -40,9 +40,8 @@ function ControlNetCard(props: any){
                 keyInt = 67;
                 toast("Preprocessor defaulting to 67");
 
-        dispatch(genSlice.actions.updateControlnet({...data, preprocessorId: keyInt}));
-
         }
+        dispatch(genSlice.actions.updateControlnet({...data, preprocessorId: keyInt, preprocessorIdStr: keyString}));
     }
 
     const setStrength = (keyString: string) => {
@@ -60,22 +59,34 @@ function ControlNetCard(props: any){
             default:
                 keyOutput = "Mid";
                 toast("Preprocessor defaulting to Mid strength.");
-        dispatch(genSlice.actions.updateControlnet({...data, strengthType: keyOutput}));
+        }
+        dispatch(genSlice.actions.updateControlnet({...data, strengthType: keyOutput, strengthTypeStr: keyString}));
     }
+
+    console.log(data);
 
     return(
     <div className={stylesgen.controlnetcard}>
         <button onClick={()=>dispatch(genSlice.actions.popControlnet(data.name))}>X</button>
-        <select className={styles.inputnum} value={data.preprocessorId} onChange={(e)=>setPreprocessor(e.target.value)}>
-            <option value="style">Style</option>
-            <option value="character">Character</option>
-            <option value="content">Content</option>
-            <option value="edge">Edge</option>
-            <option value="depth">Depth</option>
-            <option value="pose">Pose</option>
-            <option value="text">Text</option>
-        </select>
-        <img src={data.url} />
+        <div className={stylesgen.controlnetcardgrid}>
+            <img src={data.url} />
+            <div className={stylesgen.controlnetcontrols}>
+                <select className={styles.inputnum} value={data.preprocessorIdStr} onChange={(e)=>setPreprocessor(e.target.value)}>
+                    <option value="style">Style</option>
+                    <option value="character">Character</option>
+                    <option value="content">Content</option>
+                    <option value="edge">Edge</option>
+                    <option value="depth">Depth</option>
+                    <option value="pose">Pose</option>
+                    <option value="text">Text</option>
+                </select>
+                <select className={styles.inputnum} value={data.strengthTypeStr} onChange={(e)=>setStrength(e.target.value)}>
+                    <option value="low">Low</option>
+                    <option value="mid">Mid</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+        </div>
     </div>
     )
 }
@@ -156,6 +167,19 @@ function EditorImageGenerate(props: any) {
         }
     }, []);
 
+    const cleanControlnets = (controlnetsArr: Array<any>) => {
+        return controlnetsArr.map((el: any)=>{
+            return({
+                initImageId: el.initImageId,
+                initImageType: el.initImageType,
+                preprocessorId: el.preprocessorId,
+                strengthType: el.strengthType,
+                influence: el.influence
+            });
+        })
+
+    }
+
 
     const generateImage = async () => {
         if(!working && prompt.length > 10){
@@ -165,7 +189,15 @@ function EditorImageGenerate(props: any) {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer: ${token}`
                 };
-                let leopayload = {prompt: prompt, numImages: numImages, negative: negative, preset: preset, imagePrompts: imagePrompts, height: height, width: width, model: useModel};
+                let mappedcn = controlnets.map((el: any)=> {
+                    return({
+                        initImageId: el.initImageId,
+                        initImageType: el.initImageType,
+                        preprocessorId: el.preprocessorId,
+                        strengthType: el.strengthType,
+                    })
+                })
+                let leopayload = {prompt: prompt, numImages: numImages, negative: negative, preset: preset, imagePrompts: imagePrompts, height: height, width: width, model: useModel, controlnets: cleanControlnets(mappedcn)};
                 let res = await axios.post(`${process.env.NEXT_PUBLIC_SERVICE_HOST}/api/generate/image`, leopayload, {headers: headers});
                 setData(res.data);
             } catch (e){

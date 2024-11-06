@@ -57,7 +57,9 @@ export const genSlice = createSlice({
         controlnetdoc["initImageId"] = foundInitImage.Value;;
         controlnetdoc["initImageType"] = "UPLOADED";
         controlnetdoc["preprocessorId"] = 67;
+        controlnetdoc["preprocessorIdStr"] = 'style';
         controlnetdoc["strengthType"] = "High";
+        controlnetdoc["strengthTypeStr"] = "high";
         controlnetdoc["influence"] = 0.5;
         state.controlnets.push(controlnetdoc);
     },
@@ -65,6 +67,7 @@ export const genSlice = createSlice({
         state.controlnets = state.controlnets.filter((el: any)=> el.name != action.payload);
     },
     updateControlnet: (state, action) => {
+      console.log(state, action.payload);
       state.controlnets = state.controlnets.map((el: any, idx: number)=>{
         if(el.name == action.payload.name){
           return {...el, ...action.payload};
@@ -72,7 +75,6 @@ export const genSlice = createSlice({
           return el;
         }
       });
-    }
     }
   }
 });

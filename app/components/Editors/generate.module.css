@@ -3,17 +3,29 @@
     width: 128px;
 }
 
-.controlnetcard > img {
-    position: absolute;
-    left: 0px;
-    top: 0px;
+.controlnetdiv {
+    height: 150px;
+    width: 100%;
+    position: relative;
+}
+
+.controlnetcardgrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.controlnetcardgrid > img {
+    position: relative;
     height: 128px;
     width: 128px;
     object-fit: cover;
 }
 
-.controlnetdiv {
-    height: 150px;
-    width: 100%;
-    position: relative;
+.controlnetcontrols {
+    width: 150px;
+    height: 128px;
+}
+
+.controlnetcontrols > select {
+    max-height: 64px;
 }
