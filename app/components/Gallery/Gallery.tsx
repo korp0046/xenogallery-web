@@ -2,12 +2,14 @@
 
 /* Core */
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 /* Instruments */
 import {
   ViewBox,
   assetSlice,
   gallerySlice,
+  genSlice,
   getGalleryObjectsAsync,
   getGameAsync,
   getRoomAsync,
@@ -19,6 +21,7 @@ import {
   selectGalleryObjects,
   selectGalleryScratch,
   selectRoomState,
+  selectToken,
   selectUsername,
   selectViewBox,
   updateObjectTagsAsync,
@@ -42,12 +45,36 @@ let lastVersion = 0;
 
 function GalleryEditor(props: any){
   const dispatch = useDispatch();
+  const [uploading, setUploading] = useState(false);
   const scratch = useSelector(selectGalleryScratch);
   const editor = useSelector(selectGalleryEditor);
+  const token = useSelector(selectToken);
 
   const endEdit = () => {
     dispatch(gallerySlice.actions.setScratch(null));
     dispatch(gallerySlice.actions.setEditor(false));
+  }
+
+  const leoUpload = async () => {
+    if(!uploading){
+      setUploading(true);
+      try{
+          let headers = {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer: ${token}`
+          };
+          let res = await axios.post(`${process.env.NEXT_PUBLIC_SERVICE_HOST}/api/generate/upload`, scratch, {headers: headers});
+          dispatch(gallerySlice.actions.updateLocalItem(res.data));
+      } catch (e){
+          console.log('prep4ai', e);
+      }
+      setUploading(false);
+    }
+  }
+
+  const sendToControlnet = async () => {
+    console.log('scratch', scratch);
+    dispatch(genSlice.actions.pushControlnet(scratch));
   }
 
   if(editor){
@@ -56,6 +83,8 @@ function GalleryEditor(props: any){
       <div>{scratch.name}</div>
       <div><KVEditor orig={scratch.tags} gallery={scratch.gallery} name={scratch.name}/></div>
       <div className={styles.editbutton} onClick={()=>endEdit()}>X</div>
+      <button onClick={()=>leoUpload()}>PREP4AI</button>
+      <button onClick={()=>sendToControlnet()}>CONTROLNET</button>
 
     </div>
     );

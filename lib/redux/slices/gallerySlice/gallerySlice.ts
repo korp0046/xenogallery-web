@@ -24,6 +24,15 @@ export const gallerySlice = createSlice({
     },
     setScratch: (state, action) => {
       state.scratch = action.payload;
+    },
+    updateLocalItem: (state, action) => {
+      state.objects = state.objects.map((el: any, idx: number)=>{
+        if(el.name == action.payload.name){
+          return {...el, ...action.payload};
+        } else {
+          return el;
+        }
+      });
     }
   },
   extraReducers: (builder) => {

@@ -4,5 +4,5 @@ import EditorImageGenerate from "../components/Editors/EditorImageGenerate";
 
 
 export default function Page({ params }: { params: { } }) {
-    return <LoginProvider><div><EditorImageGenerate /></div></LoginProvider>;
+    return <LoginProvider><EditorImageGenerate /></LoginProvider>;
 }

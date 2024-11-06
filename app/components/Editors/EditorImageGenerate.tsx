@@ -2,9 +2,22 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import styles from './editor.module.css';
+import stylesgen from './generate.module.css';
 import _ from 'lodash';
 import { useDispatch, useSelector } from "react-redux";
-import { genSlice, selectHeight, selectImgData, selectLastNegPrompt, selectLastPrompt, selectNumImages, selectPreset, selectToken, selectWidth } from "@/lib/redux";
+import { genSlice, selectControlnets, selectHeight, selectImgData, selectLastNegPrompt, selectLastPrompt, selectModels, selectNumImages, selectPreset, selectToken, selectWidth } from "@/lib/redux";
+
+function ControlNetCard(props: any){
+    const dispatch = useDispatch();
+    const data = props.data;
+    return(
+    <div className={stylesgen.controlnetcard}>
+        <div onClick={()=>dispatch(genSlice.actions.popControlnet(data.name))}>X</div>
+        <img src={data.url} />
+    </div>
+    )
+}
+
 
 function EditorImageGenerate(props: any) {
     const dispatch = useDispatch();
@@ -13,6 +26,19 @@ function EditorImageGenerate(props: any) {
     const token = useSelector(selectToken);
 
     const [imgStyles, setImgStyles]: any = useState([]);
+
+    const [useModel, setUseModel]: any = useState({
+        "id": "2067ae52-33fd-4a82-bb92-c2c55e7d2786",
+        "name": "AlbedoBase XL",
+        "description": "A great generalist model that tends towards more CG artistic outputs. By albedobond.",
+        "nsfw": false,
+        "featured": true,
+        "generated_image": {
+            "id": "2590401b-a844-4b79-b0fa-8c44bb54eda0",
+            "url": "https://cdn.leonardo.ai/users/384ab5c8-55d8-47a1-be22-6a274913c324/generations/6a441e3f-594d-442f-b70b-0d867a09e589/AlbedoBase_XL_A_sleek_and_menacing_dwarf_his_metallic_body_gle_3.jpg"
+        }
+    });
+
 
     const negative = useSelector(selectLastNegPrompt);
     const setNegative = (value: string) => dispatch(genSlice.actions.setLastNegPrompt(value));
@@ -28,6 +54,10 @@ function EditorImageGenerate(props: any) {
     const setNumImages = (value: number) => dispatch(genSlice.actions.setNumImages(value));
     const data = useSelector(selectImgData);
     const setData = (value: any) => dispatch(genSlice.actions.setImgData(value));
+    const models = useSelector(selectModels);
+    const setModels = (value: any) => dispatch(genSlice.actions.setModels(value));
+    const controlnets = useSelector(selectControlnets);
+    const setControlnets = (value: any) => dispatch(genSlice.actions.setControlnets(value));
 
     useEffect(()=> {
         if(imgStyles.length == 0){
@@ -46,6 +76,24 @@ function EditorImageGenerate(props: any) {
         }
     }, []);
 
+    useEffect(()=> {
+        if(models.length == 0){
+            (async function() {
+                try {
+                    let headers = {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer: ${token}`
+                    };
+                    const res = await axios.get(`${process.env.NEXT_PUBLIC_SERVICE_HOST}/api/generate/models`, { headers: headers });
+                    const models = res?.data?.data?.custom_models || [];
+                    dispatch(genSlice.actions.setModels(models));
+                } catch (e) {
+                    console.error(e);
+                }
+              })();
+        }
+    }, []);
+
 
     const generateImage = async () => {
         if(!working && prompt.length > 10){
@@ -55,7 +103,7 @@ function EditorImageGenerate(props: any) {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer: ${token}`
                 };
-                let leopayload = {prompt: prompt, numImages: numImages, negative: negative, preset: preset, imagePrompts: imagePrompts, height: height, width: width};
+                let leopayload = {prompt: prompt, numImages: numImages, negative: negative, preset: preset, imagePrompts: imagePrompts, height: height, width: width, model: useModel};
                 let res = await axios.post(`${process.env.NEXT_PUBLIC_SERVICE_HOST}/api/generate/image`, leopayload, {headers: headers});
                 setData(res.data);
             } catch (e){
@@ -66,7 +114,7 @@ function EditorImageGenerate(props: any) {
     }
 
     return (
-        <div style={{position: 'relative', paddingTop: '40px', display: props.hidden ? 'none': 'block'}}>
+        <div style={{position: 'relative', paddingTop: '40px', display: 'block'}}>
             <div>
                 <div className={styles.inputstrheader + ' ' + styles.inputstrheaderselect}>GenerativeTools</div>
                 <div>
@@ -78,7 +126,34 @@ function EditorImageGenerate(props: any) {
                         <div className={styles.inputstrheader + ' ' + styles.inputstrheaderselect}>Negative</div>
                         <input className={styles.inputstr} type="text" value={negative} onChange={(e)=>setNegative(e.target.value)} />
                     </div>
+                    <div className={stylesgen.controlnetdiv}>
+                            <div className={styles.inputstrheader + ' ' + styles.inputstrheaderselect}>Controlnets</div>
+                            <div>
+                                {
+                                    controlnets.map((el: any, idx: number)=> {
+                                        return(<ControlNetCard data={el} idx={idx}/>)
+                                    })
+                                }
+                            </div>
+                        </div>
                     <div className={styles.statsflex}>
+                        <div className={styles.editdiv}>
+                            <div className={styles.inputstrheader + ' ' + styles.inputstrheaderselect}>Model</div>
+                            <select className={styles.inputstr} value={useModel.name} onChange={(e)=>{
+                                let model = models.find((el:any)=>el.name == e.target.value);
+                                if(model){
+                                    setUseModel(model);
+                                }}
+                            }>
+                                {
+                                    models.map((el: any, idx: number)=> {
+                                        return(
+                                            <option key={idx} value={el.name}>{el.name}</option>
+                                        )
+                                    })
+                                }
+                            </select>
+                        </div>
                         <div className={styles.editdiv}>
                             <div className={styles.inputstrheader + ' ' + styles.inputstrheaderselect}>Preset</div>
                             <select className={styles.inputstr} value={preset} onChange={(e)=>setPreset(e.target.value)}>
@@ -96,41 +171,7 @@ function EditorImageGenerate(props: any) {
                                     <option value="SKETCH_COLOR">SKETCH_COLOR</option>
                             </select>
                         </div>
-                        <div className={styles.editdiv}>
-                            <div className={styles.inputstrheader + ' ' + styles.inputstrheaderselect}>Battlemap Preset</div>
-                            <select 
-                                className={styles.inputstr} 
-                                value={imagePrompts.length == 0 ? 'NONE' : imagePrompts[0]}
-                                onChange={(e)=>{
-                                    if(e.target.value){
-                                        if(e.target.value == "NONE"){
-                                            setImagePrompts([]);
-                                        } else {
-                                            setImagePrompts([String(e.target.value)]);
-                                        }
-                                    }
-                                }}>
-                                    <option value="NONE">NONE</option>
-                                    {
-                                        imgStyles.map((el: any, idx: number)=> {
-                                            return(
-                                                <option key={idx} value={el.system.image_id}>
-                                                    {el.name}
-                                                </option>
-                                            )
-                                        })
-                                    }
-                                    {
-                                        /*
-                                        <option value="e572347e-0788-47c8-8d23-34de2dd9a9e0">BADLANDS</option>
-                                        <option value="3d7912c4-daa7-4d52-807d-3f0a8c0af3ef">FOREST</option>
-                                        <option value="24e81641-42ae-4cb7-b6b3-11c79e85f5a5">SWAMP</option>
-                                        <option value="a2692c89-6cb7-4f40-bb1c-0cd2391a0210">FOREST ROAD</option>
-                                        <option value="ede6804d-6f0e-45e7-ba8a-b40f9e4d04c4">LAKESHORE</option>
-                                        */
-                                    }
-                            </select>
-                        </div>
+
                         <div className={styles.editdiv}>
                             <div className={styles.inputstrheader + ' ' + styles.inputstrheaderselect}>Height</div>
                             <input className={styles.inputnum} type="number" value={height} min={512} max={1536} onChange={(e)=>setHeight(Number(e.target.value))}/>

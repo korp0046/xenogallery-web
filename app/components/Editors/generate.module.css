@@ -1,0 +1,19 @@
+.controlnetcard {
+    height: 128px;
+    width: 128px;
+}
+
+.controlnetcard > img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 128px;
+    width: 128px;
+    object-fit: cover;
+}
+
+.controlnetdiv {
+    height: 150px;
+    width: 100%;
+    position: relative;
+}

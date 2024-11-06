@@ -1,5 +1,6 @@
 /* Core */
 import { createSlice } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 const initialState: GenSlice = {
   lastPrompt: "",
@@ -9,6 +10,8 @@ const initialState: GenSlice = {
   width: 1024,
   numImages: 4,
   imgData: [],
+  models: [],
+  controlnets: [],
   status: 'idle'
 }
 
@@ -38,6 +41,30 @@ export const genSlice = createSlice({
     setImgData: (state, action) => {
         state.imgData = action.payload;
     },
+    setModels: (state, action) => {
+        state.models = action.payload;
+    },
+    setControlnets: (state, action) => {
+        state.controlnets = action.payload;
+    },
+    pushControlnet: (state, action) => {
+        let controlnetdoc = _.cloneDeep(action.payload);
+        let foundInitImage = controlnetdoc.tags.find((el: any)=>el.Key == "initImage");
+        if(!foundInitImage){
+          toast("Not initialized for AI.");
+          return;
+        }
+        controlnetdoc["initImageId"] = foundInitImage.Value;;
+        controlnetdoc["initImageType"] = "UPLOADED";
+        controlnetdoc["initImageType"] = "UPLOADED";
+        controlnetdoc["preprocessorId"] = 67;
+        controlnetdoc["strengthType"] = "High";
+        controlnetdoc["influence"] = 0.64;
+        state.controlnets.push(controlnetdoc);
+    },
+    popControlnet: (state, action) => {
+        state.controlnets = state.controlnets.filter((el: any)=> el.name != action.payload);
+    }
   }
 });
 
@@ -49,6 +76,8 @@ export interface GenSlice {
   height: number,
   width: number,
   numImages: number,
+  models: Array<any>,
   imgData: Array<any>,
+  controlnets: Array<any>,
   status: 'idle' | 'loading' | 'failed'
 }

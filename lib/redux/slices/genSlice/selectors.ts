@@ -11,3 +11,5 @@ export const selectHeight = (state: ReduxState) => state.gen.height;
 export const selectWidth = (state: ReduxState) => state.gen.width;
 export const selectNumImages = (state: ReduxState) => state.gen.numImages;
 export const selectImgData = (state: ReduxState) => state.gen.imgData;
+export const selectModels = (state: ReduxState) => state.gen.models;
+export const selectControlnets = (state: ReduxState) => state.gen.controlnets;
