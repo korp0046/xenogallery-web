@@ -20,6 +20,7 @@ import {
   selectGalleryEditor,
   selectGalleryObjects,
   selectGalleryScratch,
+  selectGallerySelection,
   selectRoomState,
   selectToken,
   selectUsername,
@@ -98,7 +99,9 @@ function GalleryCard(props:any){
   const [loading, setLoading] = useState(false);
   const [imageDimensions, setImageDimensions]: any = useState({height: 512, width: 512, displayHeight: 512, displayWidth: 512});
   const galleryObjects = useSelector(selectGalleryObjects);
+  const gallerySelection = useSelector(selectGallerySelection);
   const data = props.data;
+  const selected = gallerySelection.map((el: any)=> el.name).includes(data.name);
   const { ref, inView, entry } = useInView({
     /* Optional options */
     threshold: 0,
@@ -160,11 +163,12 @@ function GalleryCard(props:any){
 
 
   return(
-  <div className={styles.gallerycard} style={{width: imageDimensions.displayWidth, height: imageDimensions.displayHeight}} key={props.idx} ref={ref}>
+  <div className={`${styles.gallerycard} ${selected ? styles.border : ''}`} style={{width: imageDimensions.displayWidth, height: imageDimensions.displayHeight}} key={props.idx} ref={ref}>
     <div className={styles.gallerycardname} style={{width: imageDimensions.displayWidth}}>{data.name}</div>
     <img src={data.urlThumb} style={{width: imageDimensions.displayWidth, height: imageDimensions.displayHeight}}/>
     <div className={styles.editbutton} onClick={()=>startEdit()}>EDIT</div>
     <div className={styles.linkbutton} onClick={()=>getLink()}>LINK</div>
+    <div className={`${styles.selectbutton} ${selected ? styles.opaque : styles.transparent}`} onClick={()=>dispatch(gallerySlice.actions.toggleSelected(data))}>SELECT</div>
   </div>
   )
 
@@ -178,6 +182,7 @@ export default function Gallery(props: any){
     const roomState = useSelector(selectRoomState);
     const username = useSelector(selectUsername);
     const galleryObjects = useSelector(selectGalleryObjects);
+    const gallerySelection = useSelector(selectGallerySelection);
 
     const gallery = params && params.slug ? params.slug : 'default';
 

@@ -34,6 +34,32 @@
     filter: opacity(80%);
 }
 
+.selectbutton {
+    background-color: blueviolet;
+    position: absolute;
+    border-radius: 25px;
+    height: 50px;
+    width: 50px;
+    bottom: 4px;
+    right: 4px;
+    color: white;
+    vertical-align: middle;
+    text-align: center;
+    padding-top: 12px;
+}
+
+.opaque {
+    filter: opacity(100%);
+}
+
+.transparent {
+    filter: opacity(60%);
+}
+
+.border {
+    box-shadow: inset -1px 0 0 red, inset 0 -1px 0 red, inset 1px 0 0 red, inset 0 1px 0 red;
+}
+
 .editbutton:hover {
     background-color: orange;
     cursor: pointer;
@@ -41,6 +67,12 @@
 }
 
 .linkbutton:hover {
+    background-color: orange;
+    cursor: pointer;
+    filter: opacity(100%);
+}
+
+.selectbutton:hover {
     background-color: orange;
     cursor: pointer;
     filter: opacity(100%);

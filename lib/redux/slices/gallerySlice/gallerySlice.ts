@@ -4,6 +4,7 @@ import { getGalleryListAsync, getGalleryObjectsAsync, postGalleryAsync, updateOb
 import { AssetActor } from '@/lib/util/assetTypes';
 
 const initialState: GallerySliceState = {
+  selectedlist: [],
   scratch: null,
   editor: false,
   gallerylist: [],
@@ -33,6 +34,30 @@ export const gallerySlice = createSlice({
           return el;
         }
       });
+    },
+    deleteLocalItem: (state, action) => {
+      let nameArr = action.payload.map((el: any)=>el.name);
+      state.objects = state.objects.filter((el: any, idx: number)=>{
+        return(!nameArr.includes(el.name))
+      });
+    },
+    toggleSelected: (state, action) => {
+      let temp = [];
+      let done = false;
+      for(let item of state.selectedlist){
+        if(item.name != action.payload.name){
+          temp.push(item);
+        } else {
+          done = true;
+        }
+      }
+      if(!done){
+        temp.push(action.payload);
+      }
+      state.selectedlist = temp;
+    },
+    clearSelectedList: (state, action) => {
+      state.selectedlist = [];
     }
   },
   extraReducers: (builder) => {
@@ -101,6 +126,7 @@ export const gallerySlice = createSlice({
 
 /* Types */
 export interface GallerySliceState {
+  selectedlist: Array<any>,
   scratch: any,
   editor: boolean,
   gallerylist: Array<any>,
