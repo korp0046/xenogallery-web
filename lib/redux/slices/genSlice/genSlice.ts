@@ -1,6 +1,7 @@
 /* Core */
 import { createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
+import _ from 'lodash';
 
 const initialState: GenSlice = {
   lastPrompt: "",
