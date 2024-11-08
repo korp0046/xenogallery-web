@@ -5,7 +5,7 @@ import _ from 'lodash';
 
 const initialState: GenSlice = {
   lastPrompt: "",
-  lastNegPrompt: 'cartoony, border, extremely poor quality, subpar quality, average quality, awkward cropping, out of focus, rough sketch, low resolution, excessive JPEG artifacts, visible signature, prominent watermark, username distraction, artist name overshadowing',
+  lastNegPrompt: 'logo, decal, emblem, symbol, sign, stamp, insignia, crest, seal, badge, trademark, border, stamp, monogram, out of focus, rough sketch, low resolution, JPEG artifacts, visible signature, prominent watermark, username distraction, artist name overshadowing',
   preset: "DYNAMIC",
   height: 1024,
   width: 1024,
