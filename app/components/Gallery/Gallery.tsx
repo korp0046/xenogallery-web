@@ -144,7 +144,7 @@ function GalleryCard(props:any){
 
   useEffect(()=>{
     if(inView && loadedObjCount == (props.idx + 1) && loadedObjCount >= 9){
-      dispatch(getGalleryObjectsAsync({gallery: data.gallery, limit: 10, last: data.name, more: true}));
+      dispatch(getGalleryObjectsAsync({gallery: data.gallery, limit: 10, last: data.lastModified, more: true}));
     }
   }, [inView]);
 
@@ -162,7 +162,7 @@ function GalleryCard(props:any){
   return(
   <div className={styles.gallerycard} style={{width: imageDimensions.displayWidth, height: imageDimensions.displayHeight}} key={props.idx} ref={ref}>
     <div className={styles.gallerycardname} style={{width: imageDimensions.displayWidth}}>{data.name}</div>
-    <img src={data.url} style={{width: imageDimensions.displayWidth, height: imageDimensions.displayHeight}}/>
+    <img src={data.urlThumb} style={{width: imageDimensions.displayWidth, height: imageDimensions.displayHeight}}/>
     <div className={styles.editbutton} onClick={()=>startEdit()}>EDIT</div>
     <div className={styles.linkbutton} onClick={()=>getLink()}>LINK</div>
   </div>
