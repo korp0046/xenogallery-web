@@ -50,13 +50,19 @@ export const genSlice = createSlice({
     pushControlnet: (state, action) => {
         let controlnetdoc = _.cloneDeep(action.payload);
         let foundInitImage = controlnetdoc.tags.find((el: any)=>el.Key == "initImage");
-        let foundInitImageType = controlnetdoc.tags.find((el: any)=>el.Key == "initImageType");
-        if(!foundInitImage){
+        let foundId = controlnetdoc.tags.find((el: any)=>el.Key == "id");
+        if(foundId){
+          controlnetdoc["initImageId"] = foundId.Value;
+          controlnetdoc["initImageType"] =  "GENERATED";
+        }
+        if(foundInitImage){
+          controlnetdoc["initImageId"] = foundInitImage.Value;
+          controlnetdoc["initImageType"] = "UPLOADED";
+        }
+        if(!controlnetdoc["initImageId"]){
           toast("Not initialized for AI.");
           return;
         }
-        controlnetdoc["initImageId"] = foundInitImage.Value;
-        controlnetdoc["initImageType"] = foundInitImageType ? foundInitImageType : "UPLOADED";
         controlnetdoc["preprocessorId"] = 67;
         controlnetdoc["preprocessorIdStr"] = 'style';
         controlnetdoc["strengthType"] = "High";

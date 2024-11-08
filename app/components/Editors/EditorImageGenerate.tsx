@@ -285,13 +285,13 @@ function EditorImageGenerate(props: any) {
                     <div className={styles.imagedivpreview}>
                     {
                         data.map((el: any, idx: number)=> {
-                            return(<div className={styles.imgdivsmall} key={idx}><img className={styles.imgimgsmall} src={el.img} /></div>);
+                            return(<div className={styles.imgdivsmall} key={idx}><img className={styles.imgimgsmall} src={el.urlThumb} /></div>);
                         })
                     }
                     </div>
                     {
                         data.map((el: any, idx: number)=> {
-                            return(<div className={styles.imgdiv} key={idx}><img className={styles.imgimg} src={el.system.img} /></div>);
+                            return(<div className={styles.imgdiv} key={idx}><img className={styles.imgimg} src={el.url} /></div>);
                         })
                     }
                 </div>
