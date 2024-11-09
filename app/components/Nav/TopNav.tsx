@@ -114,7 +114,6 @@ export default function TopNav(props: any) {
                 <div className={`${stylesbutton.button} ${tabOpen == null ? styles.opentab : ''}`} onClick={()=>{gotoRoute('/'); setNavTabOpen(null);}}>HOME</div>
                 { username ? <div className={`${stylesbutton.button} ${tabOpen == 'rooms' ? styles.opentab : ''}`} onClick={()=>gotoRoute('/rooms')}>ROOMS</div> : null }
                 <div className={`${stylesbutton.button} ${tabOpen == 'gallery' ? styles.opentab : ''}`} onClick={()=>setNavTabOpen('gallery')}>GALLERY</div>
-                <div className={`${stylesbutton.button} ${tabOpen == 'genai' ? styles.opentab : ''}`} onClick={()=>setNavTabOpen('genai')}>GENAI</div>
                 <div className={`${stylesbutton.button} ${tabOpen == 'rules' ? styles.opentab : ''}`} onClick={()=>setNavTabOpen('rules')}>RULES</div>
                 <div className={`${stylesbutton.button} ${tabOpen == 'about' ? styles.opentab : ''}`} onClick={()=>setNavTabOpen('about')}>ABOUT</div>
                 { username ? <div className={`${stylesbutton.button} ${tabOpen == 'user' ? styles.opentab : ''}`} onClick={()=>setNavTabOpen('user')}>USER</div> : <div onClick={()=>setNavTabOpen('login')}>LOGIN</div> }
@@ -128,7 +127,6 @@ export default function TopNav(props: any) {
                         { gameState ? <SimpleIconButton text={`Leave Game: ${gameState.name}`} action={()=>leaveGame()} img={sheetIcons.exit}/> : null }
                         { isSuperuser ? <SimpleIconButtonXL text={`Gamedocs`} img={uiIcons.rules} action={()=>gotoRoute('/admin/gamedocs')}/> : null }
                         { isSuperuser ? <SimpleIconButtonXL text={`Users`} img={uiIcons.users} action={()=>gotoRoute('/admin/users')}/> : null }
-                        { isSuperuser ? <SimpleIconButtonXL text={`Images`} img={uiIcons.image} action={()=>openModal('images')}/> : null }
                         { false ? <DarkModeToggle /> : null }
                     </div>
                     : null
@@ -181,12 +179,6 @@ export default function TopNav(props: any) {
                     tabOpen == 'gallery' ? 
                     <div className={`${styles.flex} ${styles.dropwrapper}`}>
                         <SimpleIconButtonXL text={`Gallery`} img={uiIcons.licenses} action={()=>gotoRoute('/gallery')}/>
-                    </div>
-                    : null
-                }
-                {
-                    tabOpen == 'genai' ? 
-                    <div className={`${styles.flex} ${styles.dropwrapper}`}>
                         <SimpleIconButtonXL text={`Gen Image`} img={uiIcons.basicscene} action={()=>gotoRoute('/genimg')}/>
                     </div>
                     : null
