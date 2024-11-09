@@ -8,6 +8,7 @@ import axios from 'axios';
 import {
   ViewBox,
   assetSlice,
+  deleteGalleryObjectsAsync,
   gallerySlice,
   genSlice,
   getGalleryObjectsAsync,
@@ -195,7 +196,11 @@ export default function Gallery(props: any){
     if(true){
       return (
         <div className={stylespage.root}>
-          THE GALLERY
+          <div className={styles.galleryheader}>
+            <span>THE GALLERY</span>
+            <span>{`Selected: ${gallerySelection.length}`}</span>
+            <button onClick={()=>dispatch(deleteGalleryObjectsAsync(gallerySelection))}>DELETE SELECTION</button>
+          </div>
           <div className={styles.gallerycardwrapper}>
             {galleryObjects.map((el: any,idx: number)=>{
               return(<GalleryCard key={idx} idx={idx} data={el}/>)

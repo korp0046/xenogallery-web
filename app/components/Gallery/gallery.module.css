@@ -3,6 +3,12 @@
     height: 100%;
 }
 
+.galleryheader{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
 .editbutton {
     background-color: blue;
     position: absolute;

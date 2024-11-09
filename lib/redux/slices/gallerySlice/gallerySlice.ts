@@ -114,6 +114,9 @@ export const gallerySlice = createSlice({
               state.objects = state.objects.filter((el: any, idx: number)=>{
                 return !names.includes(el.name);
               });
+              state.selectedlist = state.selectedlist.filter((el: any, idx: number)=>{
+                return !names.includes(el.name);
+              });
             }
             state.status = 'idle';
         })
