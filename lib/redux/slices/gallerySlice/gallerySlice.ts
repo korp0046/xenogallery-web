@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { upsertGameObject, upsertLiveAsset } from '@/lib/util/util';
-import { getGalleryListAsync, getGalleryObjectsAsync, postGalleryAsync, updateObjectTagsAsync } from './thunks';
+import { deleteGalleryObjectsAsync, getGalleryListAsync, getGalleryObjectsAsync, postGalleryAsync, updateObjectTagsAsync } from './thunks';
 import { AssetActor } from '@/lib/util/assetTypes';
 
 const initialState: GallerySliceState = {
@@ -101,6 +101,19 @@ export const gallerySlice = createSlice({
                 });
               }
 
+            }
+            state.status = 'idle';
+        })
+        builder
+        .addCase(deleteGalleryObjectsAsync.pending, (state) => {
+            state.status = 'loading';
+        })
+        .addCase(deleteGalleryObjectsAsync.fulfilled, (state, action) => {
+            if(action.payload.response.length > 0){
+              let names = action.payload.response.map((el: any)=> el.name);
+              state.objects = state.objects.filter((el: any, idx: number)=>{
+                return !names.includes(el.name);
+              });
             }
             state.status = 'idle';
         })

@@ -57,7 +57,11 @@
 }
 
 .border {
-    box-shadow: inset -1px 0 0 red, inset 0 -1px 0 red, inset 1px 0 0 red, inset 0 1px 0 red;
+    box-shadow: 0 4px 0 0 red; /* Border bottom */
+    box-shadow: 0 -4px 0 0 red; /* Border top */
+    box-shadow: -4px 0 0 0 red; /* Border left */
+    box-shadow: 4px 0 0 0 red; /* Border right */
+    box-shadow: 0 0 0 4px red; /* All the borders by using the spread properties */
 }
 
 .editbutton:hover {

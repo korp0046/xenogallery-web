@@ -67,6 +67,21 @@ export const doUpdateObjectTags = async (
 return null;
 }
 
+export const doDeleteObjects = async (
+  payload: any
+): Promise<any> => {
+  const token = reduxStore.getState().user.token;
+  if(token){
+    let headers = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer: ${token}`
+    };
+    const response = await axios.delete(`${process.env.NEXT_PUBLIC_SERVICE_HOST}/api/gallery`, { headers: headers, data: payload });
+    return response.data;
+  }
+return null;
+}
+
 export const getGalleryListAsync = createAppAsyncThunk(
     'gallery/getGalleryListAsync',
     async (payload: any) => {
@@ -99,6 +114,15 @@ export const getGalleryListAsync = createAppAsyncThunk(
     'gallery/updateObjectTagsAsync',
     async (payload: any) => {
         const response = await doUpdateObjectTags(payload);
+      // The value we return becomes the `fulfilled` action payload
+      return {request: payload, response: response};
+    }
+  )
+
+  export const deleteGalleryObjectsAsync = createAppAsyncThunk(
+    'gallery/deleteGalleryObjectsAsync',
+    async (payload: any) => {
+        const response = await doDeleteObjects(payload);
       // The value we return becomes the `fulfilled` action payload
       return {request: payload, response: response};
     }
