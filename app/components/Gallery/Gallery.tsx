@@ -163,8 +163,12 @@ function GalleryCard(props:any){
   }
 
   const getLink = () => {
-    navigator.clipboard.writeText(data.url);
-    toast(`Link ${data.url} Copied to Clipboard`);
+    if(navigator.clipboard){
+      navigator.clipboard.writeText(data.url);
+      toast(`Link ${data.url} Copied to Clipboard`);
+    } else {
+      toast(`${data.url}`);
+    }
   }
 
 
