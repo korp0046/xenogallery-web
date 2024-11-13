@@ -11,14 +11,18 @@ import {
   deleteGalleryObjectsAsync,
   gallerySlice,
   genSlice,
+  getGalleryListAsync,
   getGalleryObjectsAsync,
   getGameAsync,
   getRoomAsync,
+  moveGalleryObjectsAsync,
   navSlice,
   roomSlice,
   sceneSlice,
   selectActiveRoom,
   selectGalleryEditor,
+  selectGalleryList,
+  selectGalleryMoveTarget,
   selectGalleryObjects,
   selectGalleryScratch,
   selectGallerySelection,
@@ -42,6 +46,7 @@ import _ from 'lodash';
 import KVEditor from '../KVEditor/KVEditor';
 import { useInView } from "react-intersection-observer";
 import { toast } from 'react-toastify';
+import { MinioBucketType } from '@/lib/util/assetTypes';
 
 let lastVersion = 0;
 
@@ -182,10 +187,16 @@ export default function Gallery(props: any){
     const activeRoom = useSelector(selectActiveRoom);
     const roomState = useSelector(selectRoomState);
     const username = useSelector(selectUsername);
+    const moveTarget = useSelector(selectGalleryMoveTarget);
     const galleryObjects = useSelector(selectGalleryObjects);
     const gallerySelection = useSelector(selectGallerySelection);
+    const galleryList = useSelector(selectGalleryList);
 
     const gallery = params && params.slug ? params.slug : 'default';
+
+    useEffect(()=>{
+      dispatch(getGalleryListAsync(null));
+    }, []);
 
     useEffect(()=>{
       if(params && params.slug){
@@ -200,6 +211,16 @@ export default function Gallery(props: any){
             <span>THE GALLERY</span>
             <span>{`Selected: ${gallerySelection.length}`}</span>
             <button onClick={()=>dispatch(deleteGalleryObjectsAsync(gallerySelection))}>DELETE SELECTION</button>
+            <select value={moveTarget} onChange={(e)=>dispatch(gallerySlice.actions.setMoveTarget(e.target.value))}>
+              {
+                galleryList.map((el: MinioBucketType, idx: number)=> {
+                  return(
+                    <option value={el.name}>{el.name}</option>
+                  )
+                })
+              }
+          </select>
+            <button onClick={()=>dispatch(moveGalleryObjectsAsync({objects: gallerySelection, bucket: moveTarget}))}>MOVE SELECTION</button>
           </div>
           <div className={styles.gallerycardwrapper}>
             {galleryObjects.map((el: any,idx: number)=>{

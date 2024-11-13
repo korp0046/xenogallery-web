@@ -47,7 +47,7 @@ export default function GalleryRoot(props: any){
     const galleryList = useSelector(selectGalleryList);
 
     useEffect(()=>{
-      dispatch(getGalleryListAsync(roomId));
+      dispatch(getGalleryListAsync(null));
     }, []);
   
     if(true){

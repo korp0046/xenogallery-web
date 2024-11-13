@@ -1,12 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { upsertGameObject, upsertLiveAsset } from '@/lib/util/util';
-import { deleteGalleryObjectsAsync, getGalleryListAsync, getGalleryObjectsAsync, postGalleryAsync, updateObjectTagsAsync } from './thunks';
-import { AssetActor } from '@/lib/util/assetTypes';
+import { deleteGalleryObjectsAsync, getGalleryListAsync, getGalleryObjectsAsync, moveGalleryObjectsAsync, postGalleryAsync, updateObjectTagsAsync } from './thunks';
+import { AssetActor, MinioBucketType } from '@/lib/util/assetTypes';
 
 const initialState: GallerySliceState = {
   selectedlist: [],
   scratch: null,
   editor: false,
+  moveTarget: 'public',
   gallerylist: [],
   objects: [],
   status: 'idle'
@@ -58,6 +59,9 @@ export const gallerySlice = createSlice({
     },
     clearSelectedList: (state, action) => {
       state.selectedlist = [];
+    },
+    setMoveTarget: (state, action) => {
+      state.moveTarget = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -120,6 +124,22 @@ export const gallerySlice = createSlice({
             }
             state.status = 'idle';
         })
+        builder
+        .addCase(moveGalleryObjectsAsync.pending, (state) => {
+            state.status = 'loading';
+        })
+        .addCase(moveGalleryObjectsAsync.fulfilled, (state, action) => {
+            if(action.payload.response.length > 0){
+              let names = action.payload.response.map((el: any)=> el.name);
+              state.objects = state.objects.filter((el: any, idx: number)=>{
+                return !names.includes(el.name);
+              });
+              state.selectedlist = state.selectedlist.filter((el: any, idx: number)=>{
+                return !names.includes(el.name);
+              });
+            }
+            state.status = 'idle';
+        })
     builder
         .addCase(updateObjectTagsAsync.pending, (state) => {
             state.status = 'loading';
@@ -145,7 +165,8 @@ export interface GallerySliceState {
   selectedlist: Array<any>,
   scratch: any,
   editor: boolean,
-  gallerylist: Array<any>,
+  gallerylist: Array<MinioBucketType>,
   objects: Array<any>,
+  moveTarget: string,
   status: 'idle' | 'loading' | 'failed'
 }

@@ -5,6 +5,7 @@ import ObjectID from 'bson-objectid';
 import _ from 'lodash';
 import { toast } from 'react-toastify';
 import { reduxStore } from '../../store';
+import { MoveObjectsPayloadType } from '@/lib/util/assetTypes';
 
 export const doGetGalleryList = async (
     payload: any
@@ -82,6 +83,21 @@ export const doDeleteObjects = async (
 return null;
 }
 
+export const doMoveObjects = async (
+  payload: MoveObjectsPayloadType
+): Promise<any> => {
+  const token = reduxStore.getState().user.token;
+  if(token){
+    let headers = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer: ${token}`
+    };
+    const response = await axios.patch(`${process.env.NEXT_PUBLIC_SERVICE_HOST}/api/gallery`, payload, { headers: headers });
+    return response.data;
+  }
+return null;
+}
+
 export const getGalleryListAsync = createAppAsyncThunk(
     'gallery/getGalleryListAsync',
     async (payload: any) => {
@@ -126,4 +142,13 @@ export const getGalleryListAsync = createAppAsyncThunk(
       // The value we return becomes the `fulfilled` action payload
       return {request: payload, response: response};
     }
+  )
+
+    export const moveGalleryObjectsAsync = createAppAsyncThunk(
+      'gallery/moveGalleryObjectsAsync',
+      async (payload: any) => {
+          const response = await doMoveObjects(payload);
+        // The value we return becomes the `fulfilled` action payload
+        return {request: payload, response: response};
+      }
   )

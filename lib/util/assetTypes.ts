@@ -1,4 +1,30 @@
-import ObjectID from "bson-objectid"
+import ObjectID from "bson-objectid";
+
+export interface MinioBucketType {
+    name: string;
+    creationDate: Date;
+}
+
+export interface MinioObjectType {
+    name: string;
+    lastModified: Date;
+    etag: string;
+    size: number;
+    tags: ObjectTagsItemType[];
+    url: string;
+    urlThumb: string;
+    gallery: string;
+}
+
+export interface MoveObjectsPayloadType {
+    objects: Array<MinioObjectType>;
+    bucket: string;
+}
+
+export interface ObjectTagsItemType {
+    Key: string;
+    Value: string;
+}
 
 export interface AssetSceneSystemGrid {
     x: number,
