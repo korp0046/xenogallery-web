@@ -7,6 +7,7 @@ const initialState: GallerySliceState = {
   selectedlist: [],
   scratch: null,
   editor: false,
+  modal: false,
   moveTarget: 'public',
   gallerylist: [],
   objects: [],
@@ -23,6 +24,9 @@ export const gallerySlice = createSlice({
     },
     setEditor: (state, action) => {
       state.editor = action.payload;
+    },
+    setModal: (state, action) => {
+      state.modal = action.payload;
     },
     setScratch: (state, action) => {
       state.scratch = action.payload;
@@ -165,6 +169,7 @@ export interface GallerySliceState {
   selectedlist: Array<any>,
   scratch: any,
   editor: boolean,
+  modal: boolean,
   gallerylist: Array<MinioBucketType>,
   objects: Array<any>,
   moveTarget: string,

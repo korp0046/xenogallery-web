@@ -22,6 +22,7 @@ import {
   selectActiveRoom,
   selectGalleryEditor,
   selectGalleryList,
+  selectGalleryModal,
   selectGalleryMoveTarget,
   selectGalleryObjects,
   selectGalleryScratch,
@@ -49,6 +50,30 @@ import { toast } from 'react-toastify';
 import { MinioBucketType } from '@/lib/util/assetTypes';
 
 let lastVersion = 0;
+
+function GalleryModal(props: any){
+  const dispatch = useDispatch();
+  const visible = useSelector(selectGalleryModal);
+  const scratch = useSelector(selectGalleryScratch);
+  console.log('gallerymodal', visible, scratch);
+
+  const endModal = () => {
+    console.log('endModal');
+    dispatch(gallerySlice.actions.setScratch(null));
+    dispatch(gallerySlice.actions.setModal(false));
+  }
+
+  if(visible && scratch && scratch.url){
+    return(
+      <div className={styles.gallerymodal} onClick={()=>endModal()}>
+        <img src={scratch.url} />
+      </div>
+    )
+  } else {
+    return(<></>)
+  }
+
+}
 
 function GalleryEditor(props: any){
   const dispatch = useDispatch();
@@ -162,6 +187,12 @@ function GalleryCard(props:any){
     dispatch(gallerySlice.actions.setEditor(true));
   }
 
+  const startModal = () => {
+    console.log('startModal');
+    dispatch(gallerySlice.actions.setScratch(data));
+    dispatch(gallerySlice.actions.setModal(true));
+  }
+
   const getLink = () => {
     if(navigator.clipboard){
       navigator.clipboard.writeText(data.url);
@@ -174,6 +205,7 @@ function GalleryCard(props:any){
 
   return(
   <div className={`${styles.gallerycard} ${selected ? styles.border : ''}`} style={{width: imageDimensions.displayWidth, height: imageDimensions.displayHeight}} key={props.idx} ref={ref}>
+    <div className={styles.gallerycardclickable} style={{width: imageDimensions.displayWidth / 2, height: imageDimensions.displayHeight / 2}} onClick={()=>startModal()}></div>
     <div className={styles.gallerycardname} style={{width: imageDimensions.displayWidth}}>{data.name}</div>
     <img src={data.urlThumb} style={{width: imageDimensions.displayWidth, height: imageDimensions.displayHeight}}/>
     <div className={styles.editbutton} onClick={()=>startEdit()}>EDIT</div>
@@ -232,6 +264,7 @@ export default function Gallery(props: any){
             })}
           </div>
           <GalleryEditor />
+          <GalleryModal />
         </div>
       )
 
