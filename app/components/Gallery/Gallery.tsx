@@ -92,6 +92,7 @@ function GalleryEditor(props: any){
       <div className={styles.editbutton} onClick={()=>endEdit()}>X</div>
       <button onClick={()=>leoUpload()}>PREP4AI</button>
       <button onClick={()=>sendToControlnet()}>CONTROLNET</button>
+      <div>{scratch.url}</div>
 
     </div>
     );
