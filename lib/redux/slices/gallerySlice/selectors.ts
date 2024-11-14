@@ -8,5 +8,6 @@ export const selectGalleryList = (state: ReduxState) => state.gallery.gallerylis
 export const selectGalleryObjects = (state: ReduxState) => state.gallery.objects;
 export const selectGalleryScratch = (state: ReduxState) => state.gallery.scratch;
 export const selectGalleryEditor = (state: ReduxState) => state.gallery.editor;
+export const selectGalleryModal = (state: ReduxState) => state.gallery.modal;
 export const selectGallerySelection = (state: ReduxState) => state.gallery.selectedlist;
 export const selectGalleryMoveTarget = (state: ReduxState) => state.gallery.moveTarget;

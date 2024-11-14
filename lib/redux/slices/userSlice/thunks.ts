@@ -13,7 +13,7 @@ export const doLogin = async (
         'Content-Type': 'application/json',
         'Authorization': 'Basic ' + Buffer.from(username + ":" + password).toString('base64')
       }
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_SERVICE_HOST}/api/users/login`, { headers: headers });
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_SERVICE_HOST}/api/user/login`, { headers: headers });
     const result = response.data;
   
     return result
@@ -28,7 +28,7 @@ export const doRegister = async (
     let headers = { 
         'Content-Type': 'application/json'
       }
-    const response = await axios.post(`${process.env.NEXT_PUBLIC_SERVICE_HOST}/api/users/register`, {username: username, password: password, email: email}, { headers: headers });
+    const response = await axios.post(`${process.env.NEXT_PUBLIC_SERVICE_HOST}/api/user/register`, {username: username, password: password, email: email}, { headers: headers });
     const result = response.data;
     return result
 }
